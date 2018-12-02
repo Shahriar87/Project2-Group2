@@ -1,3 +1,50 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+#button1 {
+  vertical-align: middle;
+  background-color: red;
+  border-color: red;
+  color: #CFB53B;
+  font-family: 'Parisienne', cursive;
+  font-size: 50px;
+}
+
+#button2 {
+  vertical-align: middle;
+  background-color: green;
+  border-color: green;
+  color: #CFB53B;
+  font-family: 'Parisienne', cursive;
+  font-size: 50px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Parisienne', cursive;
+  font-size: 120px;
+  color: #CFB53B;
+}
+
+body {
+  background-image: url("/images/xmas-gif.gif");
+  background-size: 100%, 700px;
+  /* background-repeat: no-repeat; */
+}
+
+.card{
+  display: block;
+  margin: auto;
+  width: 47%;
+}
+#button1{
+  display: inline-block;
+}
+.card-title{
+  text-align: center;
+}
+h5{
+  font-family: 'Parisienne', cursive;
+  font-size: 22pt;
+}
