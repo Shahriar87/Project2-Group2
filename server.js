@@ -10,6 +10,8 @@ var PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// MAKING STATIC ROUTE TO USE CSS & JS
 app.use(express.static("public"));
 
 // Handlebars
