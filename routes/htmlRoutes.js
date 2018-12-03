@@ -12,9 +12,9 @@ module.exports = function(app) {
   });
 
    // LOAD EMPLOYEE PAGE
-   app.get("/employee", function(req, res) {
+   app.get("/company", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
-      res.render("employeePage", {
+      res.render("companyPage", {
         msg: "Welcome!",
         examples: dbExamples
       });
