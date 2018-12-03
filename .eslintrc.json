@@ -37,8 +37,7 @@
             "error",
             "always"
         ],
-        "prettier/prettier": "error",
-        "space-before-function-paren": 2
+        "prettier/prettier": "error"
     },
     "extends": [
         "prettier"
