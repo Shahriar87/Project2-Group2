@@ -1,3 +1,4 @@
+/* EMPLOYEEINDEX.HTML CSS HERE */
 body{
     background-image: url("giphy.gif");
     background-repeat: no-repeat;
@@ -18,3 +19,49 @@ h5{
     font-family: 'Parisienne', cursive;
     font-size: 22pt;
 }
+/* CUSTOMERINDEX.HTML CSS HERE */
+
+
+
+
+
+
+/* ADMIN INDEXES CSS HERE */
+.container{
+    height: 780px;
+}
+#admin-body{
+    background-image: url("christmas-images-red-christmas-decorations-hd-wallpaper-and-within-christmas-ornament-wallpaper.jpg");
+}
+h2{
+    font-family: 'Parisienne', cursive;
+    font-size: 35pt;
+}
+.col-8{
+border-style: solid;
+border-color: #000;
+height: 500px;
+font-family: 'Parisienne', cursive;
+    font-size: 28pt;
+}
+.col-4{
+    font-family: 'Parisienne', cursive;
+    font-size: 28pt;
+    border-style: solid;
+    border-color: #000;
+    height: 500px;
+    width: 500px;
+}
+.input-group{
+    margin-bottom: 155px;
+}
+.input-group-text{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+}
+
+
+
+
+
+/* SEQUELIZE BUTTONS CSS HERE */
