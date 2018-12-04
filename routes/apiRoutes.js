@@ -7,29 +7,22 @@ module.exports = function (app) {
     db.Category.findAll({
       attributes: ["categoryName"],
       raw: true
-    }).then(function (data) {
-      // res.json(dbCategory);
-      var dbCategory = {
-        dbCategory: data
-      };
-      console.log(dbCategory);
-      res.render("companyPage", dbCategory);
-    });
-  });
-
-  // GET ALL MANUFACTURER
-  app.get("/company", function (req, res) {
-    db.Manufacturer.findAll({
-      attributes: ["manufacturerName"],
-      raw: true
-    }).then(function (data) {
-      var dbManufacturer = {
-        dbManufacturer: data
-      };
-      console.log(dbManufacturer);
-      res.render("companyPage", dbManufacturer);
-    });
-  });
+    }).then(function (dbCategory) {
+		  // GET ALL MANUFACTURER
+		db.Manufacturer.findAll({
+      		attributes: ["manufacturerName"],
+      		raw: true
+    	}).then(function (dbManufacturer) {
+      		var dbStuff = {
+        		dbCategory,
+				dbManufacturer
+          };
+          
+          console.log(dbStuff);
+      		res.render("companyPage", dbStuff);
+    		});
+    	});
+  	});
 
   // Get all examples
   app.get("/api/examples", function (req, res) {
