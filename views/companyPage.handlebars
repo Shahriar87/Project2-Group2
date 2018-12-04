@@ -13,15 +13,45 @@
             <h5 class="card-title">Christmas Toy Store</h5>
             <form>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Add to toy inventory</label>
+                    <label for="exampleFormControlInput1">Toy Name</label>
                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                    <label for="exampleFormControlInput1">Toy Price</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Toy Quantity</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Toy Description</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">Example select</label>
+                    <label for="exampleFormControlSelect1">Manufacturer</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        {{#each dbManufacturer}}
+                        <option>
+                            {{manufacturerName}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    * if its a new manufacturer, create here!
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Toy Category</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        {{#each dbCategory}}
+                        <option>
+                            {{categoryName}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    * if its a new category, create here!
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Toy Ratings</label>
                     <select class="form-control" id="exampleFormControlSelect1">
                         <option>1</option>
                         <option>2</option>
@@ -31,20 +61,23 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect2">Example multiple select</label>
+                    <label for="exampleFormControlSelect2">For Children Older than</label>
                     <select multiple class="form-control" id="exampleFormControlSelect2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option>1 year</option>
+                        <option>2 year</option>
+                        <option>3 year</option>
+                        <option>4 year</option>
+                        <option>5 year</option>
                     </select>
                 </div>
             </form>
             <br>
-            <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+            <button type="button" class="btn btn-secondary btn-lg btn-block">Add to Inventory</button>
             <br>
             <a href="/">← Back To Home</a>
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
