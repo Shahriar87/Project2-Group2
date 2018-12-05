@@ -2,42 +2,23 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-  // GET ALL CATEGORIES
-  app.get("/company", function (req, res) {
-    db.Category.findAll({
-      attributes: ["categoryName"],
-      raw: true
-    }).then(function (dbCategory) {
-		  // GET ALL MANUFACTURER
-		db.Manufacturer.findAll({
-      		attributes: ["manufacturerName"],
-      		raw: true
-    	}).then(function (dbManufacturer) {
-      		var dbStuff = {
-        		dbCategory,
-				dbManufacturer
-          };
-          
-          console.log(dbStuff);
-      		res.render("companyPage", dbStuff);
-    		});
-    	});
-  	});
-
-  // Get all examples
-  app.get("/api/examples", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
-  app.get("/api/company", function (req, res) {
+  // GET Category API
+  app.get("/api/category", function (req, res) {
     db.Category.findAll({
       attributes: ["categoryName"]
     }).then(function (dbCategory) {
       res.json(dbCategory);
       // console.log(dbCategory);
+    });
+  });
 
+  // GET Manufacturer API
+  app.get("/api/manufacturer", function (req, res) {
+    db.Manufacturer.findAll({
+      attributes: ["manufacturerName"]
+    }).then(function (dbManufacturer) {
+      res.json(dbManufacturer);
+      // console.log(dbManufacturer);
     });
   });
 
