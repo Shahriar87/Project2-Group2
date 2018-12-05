@@ -7,19 +7,84 @@ body{
 .card{
     display: block;
     margin: auto;
-    width: 47%;
+    width: 65%;
+    opacity: 0.60;
 }
 #button1,{
     display: inline-block;
 }
 .card-title{
     text-align: center;
+    font-size: 80px;
+    color: #CFB53B; 
 }
 h5{
     font-family: 'Parisienne', cursive;
     font-size: 22pt;
 }
 /* CUSTOMERINDEX.HTML CSS HERE */
+h6{
+    color: beige;
+    font-size: 25px;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+#exampleFormControlSelect1{
+    margin: auto;
+    width: 90%;
+    opacity: .87;
+    color: black;
+}
+#exampleFormControlSelect1:hover{
+    box-shadow: 6px 6px 15px white;
+}
+#exampleFormControlSelect2{
+    margin: auto;
+    width: 90%;
+    opacity: .87;
+    color: black;
+}
+#exampleFormControlSelect2:hover{
+    box-shadow: 6px 6px 15px white;
+}
+#exampleFormControlSelect3{
+    margin: auto;
+    width: 90%;
+    opacity: .87;
+    color: black; 
+}
+#exampleFormControlSelect3:hover{
+    box-shadow: 6px 6px 15px white;
+}
+#exampleFormControlSelect4{
+    margin: auto;
+    width: 90%;
+    opacity: .87; 
+    color: black; 
+}
+#exampleFormControlSelect4:hover{
+    box-shadow: 6px 6px 15px white;
+}
+#exampleFormControlSelect5{
+    margin: auto;
+    width: 90%;
+    opacity: .87;
+    color: black; 
+}
+#exampleFormControlSelect5:hover{
+    box-shadow: 6px 6px 15px white;
+}
+.btn-secondary{
+    margin: auto;
+    width: 90%;
+    background-color: green;
+    color: #CFB53B;
+}
+.btn-secondary:hover{
+    box-shadow: 6px 6px 15px #D14641;
+    background-color: green;
+}
 
 
 
