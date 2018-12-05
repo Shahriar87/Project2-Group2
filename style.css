@@ -28,3 +28,6 @@ body {
     background-size: 1500px 700px;
     background-repeat: no-repeat;
 }
+.card{
+    opacity: 0.65%;
+}
