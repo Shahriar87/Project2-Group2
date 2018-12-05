@@ -1,0 +1,96 @@
+/* CUSTOMERINDEX.HTML CSS HERE */
+body{
+    background-image: url("giphy.gif");
+    background-repeat: no-repeat;
+    background-size: 1500px 900px;
+}
+.card{
+    display: block;
+    margin: auto;
+    width: 47%;
+    opacity: 0.85;
+}
+    .card:hover {
+        box-shadow: 6px 6px 15px #eee;
+        margin-bottom: 1px;
+        cursor: pointer;
+}
+.form-control{
+    box-shadow: 1px 1px 1px #eee;
+    margin-bottom: 1px;
+    cursor: pointer;
+}
+#button1,{
+    display: inline-block;
+}
+.card-title{
+    text-align: center;
+}
+h5{
+    font-family: 'Parisienne', cursive;
+    font-size: 22pt;
+}
+
+/* EMPLOYEE INDEXES CSS HERE */
+.container{
+    height: 880px;
+}
+#admin-body{
+    background-image: url("christmas-images-red-christmas-decorations-hd-wallpaper-and-within-christmas-ornament-wallpaper.jpg");
+}
+h2{
+    font-family: 'Parisienne', cursive;
+    font-size: 35pt;
+    width: 30%;
+}
+.col-8{
+border-style: solid;
+border-color: #000;
+height: 600px;
+font-family: 'Parisienne', cursive;
+    font-size: 28pt;
+    color:#D14641;
+    
+}
+.col-8:hover, .col-4:hover {
+    box-shadow: 6px 6px 15px #D14641;
+    margin-bottom: 1px;
+}
+h2:hover{
+    box-shadow: 6px 6px 15px #D14641;
+}
+.row-2{
+    float: right;
+    overflow: hidden;
+}
+.col-4{
+    font-family: 'Parisienne', cursive;
+    font-size: 28pt;
+    color:#D14641;
+    border-style: solid;
+    border-color: #000;
+    background-color: white;
+    opacity: 0.85;
+    width: 600px;
+    float: left;
+    overflow: hidden;
+}
+.input-group{
+    margin-bottom: 155px;
+}
+.input-group-text{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+}
+.form-group{
+    margin-bottom: 15px;
+}
+.btn-secondary{
+    background-color: #D14641;
+}
+
+
+
+
+
+/* SEQUELIZE BUTTONS CSS HERE */
