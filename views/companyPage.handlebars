@@ -10,42 +10,24 @@
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Toy Price</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                <label for="exampleFormControlTextarea2">Toy Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Toy Quantity</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                <label for="exampleFormControlInput3">Toy Price</label>
+                <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Toy Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="exampleFormControlInput4">Toy Quantity</label>
+                <input type="email" class="form-control" id="exampleFormControlInput4" placeholder="name">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Manufacturer</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    {{#each dbManufacturer}}
-                    <option>
-                        {{manufacturerName}}
-                    </option>
-                    {{/each}}
-                </select>
-                * if its a new manufacturer, create here!
+                <label for="exampleFormControlInput5">Toy Image</label>
+                <input type="email" class="form-control" id="exampleFormControlInput5" placeholder="name">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Toy Category</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    {{#each dbCategory}}
-                    <option>
-                        {{categoryName}}
-                    </option>
-                    {{/each}}
-                </select>
-                * if its a new category, create here!
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">Toy Ratings</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="exampleFormControlSelect6">Toy Ratings</label>
+                <select class="form-control" id="exampleFormControlSelect6">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -54,8 +36,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect2">For Children Older than</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
+                <label for="exampleFormControlSelect7">For Children Older than</label>
+                <select multiple class="form-control" id="exampleFormControlSelect7">
                     <option>1 year</option>
                     <option>2 year</option>
                     <option>3 year</option>
@@ -63,11 +45,107 @@
                     <option>5 year</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect8">Q1 Score</label>
+                <select class="form-control" id="exampleFormControlSelect8">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect9">Q2 Score</label>
+                <select class="form-control" id="exampleFormControlSelect9">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect10">Q3 Score</label>
+                <select class="form-control" id="exampleFormControlSelect10">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect11">Q4 Score</label>
+                <select class="form-control" id="exampleFormControlSelect11">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect12">Q5 Score</label>
+                <select class="form-control" id="exampleFormControlSelect12">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect13">Toy Category</label>
+                <select class="form-control" id="exampleFormControlSelect13">
+                    {{#each dbCategory}}
+                    <option>
+                        {{categoryName}}
+                    </option>
+                    {{/each}}
+                </select>
+                <p>* if its a new category, create here!</p>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect14">Manufacturer</label>
+                <select class="form-control" id="exampleFormControlSelect14">
+                    {{#each dbManufacturer}}
+                    <option>
+                        {{manufacturerName}}
+                    </option>
+                    {{/each}}
+                </select>
+                <p>* if its a new manufacturer, create here!</p>
+            </div>
             <button type="button" class="btn btn-secondary btn-lg btn-block">Add to Inventory</button>
             <br>
         </div>
         <div class="row-2"></div>
-        <div class="col-8">Inventory Table</div>
+        <div class="col-8">Inventory Table
+            <table>
+                <tr>
+                    <th>Item ID</th>
+                    <th>Toy</th>
+                    <th>Price</th>
+                    <th>Stock Quantity</th>
+                </tr>
+                {{#each dbToy}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>
+                        <a href="#">
+                            <img src={{image}} alt="toy" style="width:100px">
+                        </a>
+                        {{toyName}}
+                    </td>
+                    <td>{{price}}</td>
+                    <td>{{unitStock}}</td>
+                </tr>
+                {{/each}}
+            </table>
+
+        </div>
+
         <a href="/">← Back To Home</a>
     </div>
 </div>

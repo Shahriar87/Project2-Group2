@@ -12,13 +12,15 @@ h2{
     width: 30%;
 }
 .col-8{
-border-style: solid;
-border-color: #000;
-height: 600px;
-font-family: 'Parisienne', cursive;
+    border-style: solid;
+    border-color: #000;
+    height: 800px;
+    font-family: 'Parisienne', cursive;
     font-size: 28pt;
     color:#D14641;
-    
+    background-color: white;
+    opacity: 0.85;
+    overflow: scroll;
 }
 .col-8:hover, .col-4:hover {
     box-shadow: 6px 6px 15px #D14641;
@@ -39,10 +41,11 @@ h2:hover{
     border-color: #000;
     background-color: white;
     opacity: 0.85;
-    width: 600px;
-    float: left;
+    /* width: 600px; */
+    /* float: left; */
     overflow: hidden;
 }
+
 .input-group{
     margin-bottom: 155px;
 }
@@ -52,7 +55,26 @@ h2:hover{
 }
 .form-group{
     margin-bottom: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
 }
 .btn-secondary{
     background-color: #D14641;
+}
+
+table {
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }

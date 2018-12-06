@@ -22,6 +22,23 @@ module.exports = function (app) {
     });
   });
 
+  // GET Toy API
+  app.get("/api/toy", function (req, res) {
+    db.Toy.findAll({
+    //   attributes: [
+    //     "toyName", "toyDescription", "price", 
+    //   "unitStock", "image", "rating", "ageAbove", 
+    //   "Q1", "Q2", "Q3", "Q4", "Q5"
+    // ]
+    }).then(function (dbToy) {
+      res.json(dbToy);
+      // console.log(dbToy);
+    });
+  });
+
+
+
+
   // Create a new example
   app.post("/api/examples", function (req, res) {
     db.Example.create(req.body).then(function (dbExample) {

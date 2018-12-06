@@ -23,13 +23,23 @@ module.exports = function (app) {
         attributes: ["manufacturerName"],
         raw: true
       }).then(function (dbManufacturer) {
-        var dbStuff = {
-          dbCategory,
-          dbManufacturer,
-          msg: "Christmas Toy Store"
-        };
-        console.log(dbStuff);
-        res.render("companyPage", dbStuff);
+        // GET ALL TOYS
+        db.Toy.findAll({
+          attributes: [
+            "id", "toyName", "price",
+            "unitStock", "image"
+          ],
+          raw: true
+        }).then(function (dbToy) {
+          var dbStuff = {
+            dbCategory,
+            dbManufacturer,
+            dbToy,
+            msg: "Christmas Toy Store"
+          };
+          console.log(dbStuff);
+          res.render("companyPage", dbStuff);
+        });
       });
     });
   });
@@ -38,24 +48,24 @@ module.exports = function (app) {
   app.get("/customer", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
       res.render("customerPage", {
-       msg: "Christmas Toy Store" 
+        msg: "Christmas Toy Store"
       });
-  });
-});
-
-// Load example page and pass in an example by id
-app.get("/example/:id", function (req, res) {
-  db.Example.findOne({ where: { id: req.params.id } }).then(function (
-    dbExample
-  ) {
-    res.render("example", {
-      example: dbExample
     });
   });
-});
 
-// Render 404 page for any unmatched routes
-app.get("*", function (req, res) {
-  res.render("404");
-});
+  // Load example page and pass in an example by id
+  app.get("/example/:id", function (req, res) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function (
+      dbExample
+    ) {
+      res.render("example", {
+        example: dbExample
+      });
+    });
+  });
+
+  // Render 404 page for any unmatched routes
+  app.get("*", function (req, res) {
+    res.render("404");
+  });
 };

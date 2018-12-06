@@ -1,3 +1,5 @@
+USE exampledb;
+
 INSERT INTO manufacturer (manufacturerName)
 VALUES ("LEGO");
 

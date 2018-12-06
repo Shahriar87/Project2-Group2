@@ -1,3 +1,5 @@
+USE exampledb;
+
 INSERT INTO category (categoryName)
 VALUES ("Action Toys");
 

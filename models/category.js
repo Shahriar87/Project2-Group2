@@ -6,5 +6,13 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: false,
         underscored: true
       });
+
+      Category.associate = function(models) {
+        // ASSOCIATING CATEGORY WITH TOY
+        Category.hasMany(models.Toy, {
+          onDelete: "cascade"
+        });
+      };
+
     return Category;
 };
