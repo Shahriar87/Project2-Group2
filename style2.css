@@ -55,6 +55,7 @@ font-family: 'Parisienne', cursive;
 .col-8:hover, .col-4:hover {
     box-shadow: 6px 6px 15px #D14641;
     margin-bottom: 1px;
+    cursor: pointer;
 }
 h2:hover{
     box-shadow: 6px 6px 15px #D14641;
@@ -93,4 +94,4 @@ h2:hover{
 
 
 
-/* SEQUELIZE BUTTONS CSS HERE */
+/* PRODUCT INDEX CSS HERE */
