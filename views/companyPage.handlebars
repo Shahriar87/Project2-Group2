@@ -104,7 +104,11 @@
                     </option>
                     {{/each}}
                 </select>
-                <p>* if its a new category, create here!</p>
+                <p>* if its a new category,
+                    <button type="button" id="categoryCreate" class="btn btn-secondary btn-sm btn-block">
+                        create category!
+                    </button>
+                </p>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect14">Manufacturer</label>
@@ -115,7 +119,11 @@
                     </option>
                     {{/each}}
                 </select>
-                <p>* if its a new manufacturer, create here!</p>
+                <p>* if its a new manufacturer,
+                    <button type="button" id="manufacturerCreate" class="btn btn-secondary btn-sm btn-block">
+                        create manufacturer!
+                    </button>
+                </p>
             </div>
             <button type="button" class="btn btn-secondary btn-lg btn-block">Add to Inventory</button>
             <br>
@@ -148,4 +156,88 @@
 
         <a href="/">← Back To Home</a>
     </div>
+
+    <!-- THE MODAL -->
+
+    <div id="myModal" class="modal">
+
+        <!-- MODAL CONTENT -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="author-container">
+                            <h1>Categories</h1>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="form-row">
+                                        <form id="author-form">
+                                            <td colspan="4">
+                                                <input placeholder="Enter a name" id="author-name" type="text" />
+                                            </td>
+                                            <td><button type="submit" class="btn btn-danger">Create Category</button>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- THE MODAL2 -->
+
+    <div id="myModal2" class="modal">
+
+        <!-- MODAL2 CONTENT -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="author-container">
+                            <h1>Manufacturer</h1>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="form-row">
+                                        <form id="author-form">
+                                            <td colspan="4">
+                                                <input placeholder="Enter a name" id="author-name" type="text" />
+                                            </td>
+                                            <td><button type="submit" class="btn btn-danger">Create Manufacturer</button>
+                                            </td>
+                                        </form>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close" data-dismiss="modal2">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+
 </div>
