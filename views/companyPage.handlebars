@@ -5,127 +5,129 @@
     <br>
     <div class="row">
         <div class="col-4">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Toy Name</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea2">Toy Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput3">Toy Price</label>
-                <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput4">Toy Quantity</label>
-                <input type="email" class="form-control" id="exampleFormControlInput4" placeholder="name">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput5">Toy Image</label>
-                <input type="email" class="form-control" id="exampleFormControlInput5" placeholder="name">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect6">Toy Ratings</label>
-                <select class="form-control" id="exampleFormControlSelect6">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect7">For Children Older than</label>
-                <select multiple class="form-control" id="exampleFormControlSelect7">
-                    <option>1 year</option>
-                    <option>2 year</option>
-                    <option>3 year</option>
-                    <option>4 year</option>
-                    <option>5 year</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect8">Q1 Score</label>
-                <select class="form-control" id="exampleFormControlSelect8">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect9">Q2 Score</label>
-                <select class="form-control" id="exampleFormControlSelect9">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect10">Q3 Score</label>
-                <select class="form-control" id="exampleFormControlSelect10">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect11">Q4 Score</label>
-                <select class="form-control" id="exampleFormControlSelect11">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect12">Q5 Score</label>
-                <select class="form-control" id="exampleFormControlSelect12">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect13">Toy Category</label>
-                <select class="form-control" id="exampleFormControlSelect13">
-                    {{#each dbCategory}}
-                    <option>
-                        {{categoryName}}
-                    </option>
-                    {{/each}}
-                </select>
-                <p>* if its a new category,
-                    <button type="button" id="categoryCreate" class="btn btn-secondary btn-sm btn-block">
-                        create category!
-                    </button>
-                </p>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect14">Manufacturer</label>
-                <select class="form-control" id="exampleFormControlSelect14">
-                    {{#each dbManufacturer}}
-                    <option>
-                        {{manufacturerName}}
-                    </option>
-                    {{/each}}
-                </select>
-                <p>* if its a new manufacturer,
-                    <button type="button" id="manufacturerCreate" class="btn btn-secondary btn-sm btn-block">
-                        create manufacturer!
-                    </button>
-                </p>
-            </div>
-            <button type="button" class="btn btn-secondary btn-lg btn-block">Add to Inventory</button>
+            <form id="inventoryForm">
+                <div class="form-group">
+                    <label for="name">Toy Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label for="description">Toy Description</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="price">Toy Price</label>
+                    <input type="text" class="form-control" id="price" placeholder="price">
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Toy Quantity</label>
+                    <input type="text" class="form-control" id="quantity" placeholder="quantity">
+                </div>
+                <div class="form-group">
+                    <label for="imageURL">Toy Image</label>
+                    <input type="text" class="form-control" id="imageURL" placeholder="imageURL">
+                </div>
+                <div class="form-group">
+                    <label for="rating">Toy Ratings</label>
+                    <select class="form-control" id="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">For Children Older than</label>
+                    <select multiple class="form-control" id="age">
+                        <option value="1">1 year</option>
+                        <option value="2">2 year</option>
+                        <option value="3">3 year</option>
+                        <option value="4">4 year</option>
+                        <option value="5">5 year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Q1">Q1 Score</label>
+                    <select class="form-control" id="Q1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Q2">Q2 Score</label>
+                    <select class="form-control" id="Q2">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Q3">Q3 Score</label>
+                    <select class="form-control" id="Q3">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Q4">Q4 Score</label>
+                    <select class="form-control" id="Q4">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Q5">Q5 Score</label>
+                    <select class="form-control" id="Q5">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="toyCategory">Toy Category</label>
+                    <select class="form-control" id="toyCategory">
+                        {{#each dbCategory}}
+                        <option>
+                            {{categoryName}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <p>* if its a new category,
+                        <button type="button" id="categoryCreate" class="btn btn-secondary btn-sm btn-block">
+                            create category!
+                        </button>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="toyManufacturer">Manufacturer</label>
+                    <select class="form-control" id="toyManufacturer">
+                        {{#each dbManufacturer}}
+                        <option>
+                            {{manufacturerName}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <p>* if its a new manufacturer,
+                        <button type="button" id="manufacturerCreate" class="btn btn-secondary btn-sm btn-block">
+                            create manufacturer!
+                        </button>
+                    </p>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-lg btn-block submit">Add to Inventory</button>
+            </form>
             <br>
         </div>
         <div class="row-2"></div>
