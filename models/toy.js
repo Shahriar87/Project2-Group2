@@ -3,17 +3,22 @@ module.exports = function (sequelize, DataTypes) {
         toyName: {
             type: DataTypes.STRING,
             // allowNull: false,
-            validate: {
-                len: [1]
-            }
+            // validate: {
+            //     len: [1]
+            // }
         },
         toyDescription: {
             type: DataTypes.TEXT,
             // allowNull: false,
-            len: [1]
+            // len: [1]
         },
-        price: DataTypes.DECIMAL(13, 2),
-        unitStock: DataTypes.INTEGER,
+        price: {
+            type: DataTypes.DECIMAL(13, 2)
+        },
+
+        unitStock: {
+            type: DataTypes.INTEGER
+        },
         image: {
             type: DataTypes.TEXT,
             // allowNull: false,
@@ -80,7 +85,7 @@ module.exports = function (sequelize, DataTypes) {
     Toy.associate = function (models) {
         // ASSOCIATING TOY WITH ORDER
         Toy.hasMany(models.Order, {
-            
+
         });
     };
 

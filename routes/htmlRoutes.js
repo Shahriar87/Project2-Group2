@@ -35,8 +35,8 @@ module.exports = function (app) {
             dbToy,
             msg: "Christmas Toy Store"
           };
-          console.log(dbStuff);
-          console.log(dbToy);
+          // console.log(dbStuff);
+          // console.log(dbToy);
           res.render("companyPage", dbStuff);
         });
       });

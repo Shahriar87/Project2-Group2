@@ -25,16 +25,16 @@ $(document).ready(function () {
 
     // If we have this section in our url, we pull out the toy id from the url
     // In '?toy_id=1', toyId is 1
-    if (url.indexOf("?toy_id=") !== -1) {
-        toyId = url.split("=")[1];
-        getToyData(toyId, "toy");
-    }
-    else if (url.indexOf("?category_id=") !== -1) {
-        categoryId = url.split("=")[1];
-    }
-    else if (url.indexOf("?manufacturer_id=") !== -1) {
-        manufacturerId = url.split("=")[1];
-    }
+    // if (url.indexOf("?toy_id=") !== -1) {
+    //     toyId = url.split("=")[1];
+    //     getToyData(toyId, "toy");
+    // }
+    // else if (url.indexOf("?category_id=") !== -1) {
+    //     categoryId = url.split("=")[1];
+    // }
+    // else if (url.indexOf("?manufacturer_id=") !== -1) {
+    //     manufacturerId = url.split("=")[1];
+    // }
 
     // getCategory();
 
@@ -99,19 +99,19 @@ $(document).ready(function () {
         var newToy = {
             toyName: $("#name").val().trim(),
             toyDescription: $("#description").val().trim(),
-            toyPrice: $("#price").val().trim(),
-            toyQuantity: $("#quantity").val().trim(),
+            toyPrice: parseFloat($("#price").val().trim()),
+            toyQuantity: parseInt($("#quantity").val().trim()),
             toyImage: $("#imageURL").val().trim(),
-            toyRating: $("#rating").val(),
-            ageLimit: $("#age").val(),
-            CategoryID: $("#toyCategory").val(),
-            ManufacturerID: $("#toyManufacturer").val(),
+            toyRating: parseInt($("#rating").val()),
+            ageLimit: parseInt($("#age").val()),
+            CategoryID: parseInt($("#toyCategory").val()),
+            ManufacturerID: parseInt($("#toyManufacturer").val()),
             scores: [
-                $("#Q1").val(),
-                $("#Q2").val(),
-                $("#Q3").val(),
-                $("#Q4").val(),
-                $("#Q5").val()
+                parseInt($("#Q1").val()),
+                parseInt($("#Q2").val()),
+                parseInt($("#Q3").val()),
+                parseInt($("#Q4").val()),
+                parseInt($("#Q5").val())
             ]
         };
 
@@ -119,61 +119,60 @@ $(document).ready(function () {
 
         // If we're updating a toy run updateToy to update a toy
         // Otherwise run submitToy to create a whole new toy
-        if (updating) {
-            newToy.id = toyId;
-            updateToy(newToy);
-        }
-        else {
-            submitToy(newToy);
-        }
+        // if (updating) {
+        //     newToy.id = toyId;
+        //     updateToy(newToy);
+        // }
+        // else {
+        submitToy(newToy);
+        // }
     }
 
     function submitToy(toy) {
+        console.log(toy)
         $.post("/api/toys", toy, function () {
-            console.log("Added new toy");
+            console.log("Added new toy: " + toy);
             //RELOAD PAGE
-            location.reload();
+            // location.reload();
         })
     }
 
-    // Gets toy data for the current toy if we're editing
-    function getToyData(id, type) {
-        var queryUrl;
-        switch (type) {
-            case "toy":
-                queryUrl = "/api/toys/" + id;
-                break;
-            case "category":
-                queryUrl = "/api/category/" + id;
-                break;
-            case "manufacturer":
-                queryUrl = "/api/manufacturer/" + id;
-                break;
-            default:
-                return;
-        }
-        $.get(queryUrl, function (data) {
-            if (data) {
-                console.log(data.CategoryID || data.ManufacturerID || data.id);
-                // If this toy exists, prefill our companypage forms with its data
-                titleInput.val(data.title);
-                bodyInput.val(data.body);
-                authorId = data.AuthorId || data.id;
-
-
-                $("#name").val(data.name);
-                $("#description").val(data.description);
-                $("#price").val(data.price);
-                $("#quantity").val(data.quantity);
-                $("#imageURL").val(data.image);
-                categoryId = data.CategoryID || data.ManufacturerID || data.id;
-                manufacturerId = data.CategoryID || data.ManufacturerID || data.id;
-                // If we have a toy with this id, set a flag for us to know to update the toy
-                // when we hit submit
-                updating = true;
-            }
-        });
-    }
+    // // Gets toy data for the current toy if we're editing
+    // function getToyData(id, type) {
+    //     var queryUrl;
+    //     switch (type) {
+    //         case "toy":
+    //             queryUrl = "/api/toys/" + id;
+    //             break;
+    //         case "category":
+    //             queryUrl = "/api/category/" + id;
+    //             break;
+    //         case "manufacturer":
+    //             queryUrl = "/api/manufacturer/" + id;
+    //             break;
+    //         default:
+    //             return;
+    //     }
+    //     $.get(queryUrl, function (data) {
+    //         if (data) {
+    //             console.log(data.CategoryID || data.ManufacturerID || data.id);
+    //             // If this toy exists, prefill our companypage forms with its data
+    //             titleInput.val(data.title);
+    //             bodyInput.val(data.body);
+    //             authorId = data.AuthorId || data.id;
+    //             $("#name").val(data.name);
+    //             $("#description").val(data.description);
+    //             $("#price").val(data.price);
+    //             $("#quantity").val(data.quantity);
+    //             $("#imageURL").val(data.image);
+    //             categoryId = data.CategoryID || data.ManufacturerID || data.id;
+    //             manufacturerId = data.CategoryID || data.ManufacturerID || data.id;
+    //             // If we have a toy with this id, set a flag for us to know to update the toy
+    //             // when we hit submit
+    //             updating = true;
+    //         }
+    //     });
+    // }
 
     // A function to get Category and then render our list of Category
     // function getCategory() {

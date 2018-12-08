@@ -36,19 +36,16 @@ module.exports = function (app) {
 
   // POST route for saving a new toys
   app.post("/api/toys", function(req, res) {
+    console.log(req.body);
     db.Toy.create(req.body).then(function(dbToy) {
-      console.log("new Toy added: " + dbToy)
+      // console.log("new Toy added: " + res)
+      // console.log(dbToy)
       res.json(dbToy);
     });
   });
 
 
-  // Create a new example
-  app.post("/api/examples", function (req, res) {
-    db.Example.create(req.body).then(function (dbExample) {
-      res.json(dbExample);
-    });
-  });
+
 
   // Delete an example by id
   app.delete("/api/examples/:id", function (req, res) {
