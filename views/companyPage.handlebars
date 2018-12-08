@@ -29,6 +29,7 @@
                 <div class="form-group">
                     <label for="rating">Toy Ratings</label>
                     <select class="form-control" id="rating">
+                        <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -39,6 +40,7 @@
                 <div class="form-group">
                     <label for="age">For Children Older than</label>
                     <select multiple class="form-control" id="age">
+                        <option value="" selected="selected">select a value</option>
                         <option value="1">1 year</option>
                         <option value="2">2 year</option>
                         <option value="3">3 year</option>
@@ -48,7 +50,8 @@
                 </div>
                 <div class="form-group">
                     <label for="Q1">Q1 Score</label>
-                    <select class="form-control" id="Q1">
+                    <select class="form-control validate" id="Q1">
+                        <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -58,7 +61,8 @@
                 </div>
                 <div class="form-group">
                     <label for="Q2">Q2 Score</label>
-                    <select class="form-control" id="Q2">
+                    <select class="form-control validate" id="Q2">
+                        <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -68,7 +72,8 @@
                 </div>
                 <div class="form-group">
                     <label for="Q3">Q3 Score</label>
-                    <select class="form-control" id="Q3">
+                    <select class="form-control validate" id="Q3">
+                        <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -78,7 +83,8 @@
                 </div>
                 <div class="form-group">
                     <label for="Q4">Q4 Score</label>
-                    <select class="form-control" id="Q4">
+                    <select class="form-control validate" id="Q4">
+                        <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -88,7 +94,8 @@
                 </div>
                 <div class="form-group">
                     <label for="Q5">Q5 Score</label>
-                    <select class="form-control" id="Q5">
+                    <select class="form-control validate" id="Q5">
+                        <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -99,8 +106,9 @@
                 <div class="form-group">
                     <label for="toyCategory">Toy Category</label>
                     <select class="form-control" id="toyCategory">
+                        <option value="" selected="selected">select a value</option>
                         {{#each dbCategory}}
-                        <option>
+                        <option value= {{id}}>
                             {{categoryName}}
                         </option>
                         {{/each}}
@@ -114,8 +122,9 @@
                 <div class="form-group">
                     <label for="toyManufacturer">Manufacturer</label>
                     <select class="form-control" id="toyManufacturer">
+                        <option value="" selected="selected">select a value</option>
                         {{#each dbManufacturer}}
-                        <option>
+                        <option value= {{id}}>
                             {{manufacturerName}}
                         </option>
                         {{/each}}
@@ -126,7 +135,7 @@
                         </button>
                     </p>
                 </div>
-                <button type="submit" class="btn btn-secondary btn-lg btn-block submit">Add to Inventory</button>
+                <button type="submit" id="addInv" class="btn btn-secondary btn-lg btn-block submit">Add to Inventory</button>
             </form>
             <br>
         </div>

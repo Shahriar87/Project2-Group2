@@ -5,17 +5,15 @@ module.exports = function (app) {
   // GET Category API
   app.get("/api/category", function (req, res) {
     db.Category.findAll({
-      attributes: ["categoryName"]
     }).then(function (dbCategory) {
       res.json(dbCategory);
-      // console.log(dbCategory);
+      console.log("Category: " + dbCategory);
     });
   });
 
   // GET Manufacturer API
   app.get("/api/manufacturer", function (req, res) {
     db.Manufacturer.findAll({
-      attributes: ["manufacturerName"]
     }).then(function (dbManufacturer) {
       res.json(dbManufacturer);
       // console.log(dbManufacturer);
@@ -23,7 +21,7 @@ module.exports = function (app) {
   });
 
   // GET Toy API
-  app.get("/api/toy", function (req, res) {
+  app.get("/api/toys", function (req, res) {
     db.Toy.findAll({
     //   attributes: [
     //     "toyName", "toyDescription", "price", 
@@ -36,7 +34,13 @@ module.exports = function (app) {
     });
   });
 
-
+  // POST route for saving a new toys
+  app.post("/api/toys", function(req, res) {
+    db.Toy.create(req.body).then(function(dbToy) {
+      console.log("new Toy added: " + dbToy)
+      res.json(dbToy);
+    });
+  });
 
 
   // Create a new example

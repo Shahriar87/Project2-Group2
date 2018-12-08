@@ -15,12 +15,10 @@ module.exports = function (app) {
   // GET ALL CATEGORIES
   app.get("/company", function (req, res) {
     db.Category.findAll({
-      attributes: ["categoryName"],
       raw: true
     }).then(function (dbCategory) {
       // GET ALL MANUFACTURER
       db.Manufacturer.findAll({
-        attributes: ["manufacturerName"],
         raw: true
       }).then(function (dbManufacturer) {
         // GET ALL TOYS
@@ -38,6 +36,7 @@ module.exports = function (app) {
             msg: "Christmas Toy Store"
           };
           console.log(dbStuff);
+          console.log(dbToy);
           res.render("companyPage", dbStuff);
         });
       });
