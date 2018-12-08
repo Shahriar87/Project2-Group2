@@ -3,17 +3,45 @@
     height: 880px;
 }
 body {
-    background-image: url('/images/christmas-images-red-christmas-decorations-hd-wallpaper-and-within-christmas-ornament-wallpaper.jpg');
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)), url("250px-60155-santa.png");
+    /* background-image: url('/images/christmas-images-red-christmas-decorations-hd-wallpaper-and-within-christmas-ornament-wallpaper.jpg'); */
     background-size: 100%, 700px;
+    background-position: right, right bottom;
     }
 h2{
     font-family: 'Parisienne', cursive;
     font-size: 35pt;
-    width: 30%;
+    border-style: solid;
+    border-color: #000;
+    width: 60%;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    background-color: #D14641;
 }
+@keyframes example {
+    from {background-color: white;}
+    to {background-color: #D14641;}
+  }
+  label{
+    font-family: 'Parisienne', cursive;
+    -webkit-animation-name: text; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: text;
+    animation-duration: 4s;
+  }
+  @keyframes text {
+    from {color: white;}
+    to {color: #D14641;}
+  }
 .col-8{
     border-style: solid;
     border-color: #000;
+    -webkit-animation-name: text; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: text;
+    animation-duration: 4s;
     height: 800px;
     font-family: 'Parisienne', cursive;
     font-size: 28pt;
@@ -23,11 +51,11 @@ h2{
     overflow: scroll;
 }
 .col-8:hover, .col-4:hover {
-    box-shadow: 6px 6px 15px #D14641;
+    box-shadow: 6px 6px 15px #000;
     margin-bottom: 1px;
 }
 h2:hover{
-    box-shadow: 6px 6px 15px #D14641;
+    box-shadow: 6px 6px 15px #000000;
 }
 .row-2{
     float: right;
@@ -73,6 +101,7 @@ td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    font-family: 'Parisienne', cursive;
 }
 
 tr:nth-child(even) {
