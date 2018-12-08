@@ -7,8 +7,8 @@ body{
 .container{
     margin-top: 30px;
     border-style: solid;
-  border-color: #000;
-  height: 790px;
+  border-color: #EB3323;
+  height: 700px;
   margin-bottom: 50px;
   background-color: white;
   opacity: 0.85;
@@ -32,8 +32,8 @@ hr{
   display: block;
   margin-left: 25px;
   border-style: solid;
-  border-color: #000;
-  height: 400px;
+  border-color: #EB3323;
+  height: 300px;
   font-size: 9pt;
   font-family: 'Parisienne', cursive;
 }
@@ -44,21 +44,19 @@ hr{
 }
 #image-col{
     border-style: solid;
-  border-color: #000;
+  border-color: #EB3323;
   margin-left: 25px;
   background-color: white;
-  opacity: 0.65;
   font-family: 'Parisienne', cursive;
   font-size: 9pt;
 }
 #description-col{
     margin-top: 25px;
     border-style: solid;
-  border-color: #000;
+  border-color: #EB3323;
   margin-left: 38px;
   height: 300px;
   background-color: white;
-  opacity: 0.65;
   font-family: 'Parisienne', cursive;
   font-size: 9pt;
 }
@@ -66,7 +64,7 @@ hr{
   width: 15%;
   margin-left: 900px;
   border-style: solid;
-  border-color: #000;
+  border-color: #EB3323;
   background-color: white;
   opacity: 0.65;
 }
