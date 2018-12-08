@@ -3,7 +3,10 @@ body {
     background-image: url('/images/giphy.gif');
     background-size: 100%, 700px;
     }
-
+#b-card{
+    color: navy;
+    opacity: .70;
+}
 .card{
     display: block;
     margin: auto;
@@ -24,7 +27,7 @@ h4 {
 h5 {
     font-family: 'Parisienne', cursive;
     font-size: 22pt;
-    color: rgb(252, 207, 110);
+    color: #CFB53B;
     text-align: center;
 }
 
