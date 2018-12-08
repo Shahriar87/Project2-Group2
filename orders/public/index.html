@@ -1,0 +1,239 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style>
+        table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  #quantityWarning {
+    color: black;
+  }
+    </style>
+    <title>Buy a Toy</title>
+</head>
+
+<body>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Toy name</label>
+                        <input type="text" class="form-control" id="toyName" aria-describedby="emailHelp" placeholder="Enter Toy Name">
+                        <small id="emailHelp" class="form-text text-muted"></small>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Toy Quantity</label>
+                        <input type="text" class="form-control" id="toyQuantity" placeholder="Enter Toy Quantity">
+                        <label id="quantityWarning" for="exampleInputPassword1">Are you sure you want to order x
+                            amount?</label>
+                    </div>
+                    <button id="order-submit" type="submit" class="btn btn-primary">Submit Order</button>
+                    <button id="order-history" type="submit" class="btn btn-primary">Order History</button>
+                    <button id="currentOrders" type="submit" class="btn btn-primary">Current Orders</button>
+                    <button id="warningConfirm" type="submit" class="btn btn-primary">Yes, I'm sure...</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="orderHistoryCard" class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div id="cardHeaderOne" class="card-header">
+                        Shopping Cart1
+                        <div>
+                            <button id="orderConfirmOne" type="submit" class="btn btn-primary">Yes, I'm sure...</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table id="columnHeaders">
+                            <tr>
+                                <th>Toy Name</th>
+                                <th>Toy Quantity</th>
+                                <th>Time Ordered</th>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="currentOrderValidationCard" class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div id="cardHeaderTwo" class="card-header">
+                        Shopping Cart2
+                    </div>
+                    <div class="card-body">
+                        <table id="columnHeadersTwo">
+                            <tr>
+                                <th>Toy Name</th>
+                                <th>Toy Quantity</th>
+                                <th>Time Ordered</th>
+                            </tr>
+                        </table><br>
+                        <button id="orderConfirmTwo" type="submit" class="btn btn-primary">Yes, I'm sure...</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        console.log("ready!")
+
+        $("#quantityWarning").hide();
+        $("#warningConfirm").hide();
+        $("#orderConfirmTwo").hide();
+        $("#currentOrderValidationCard").hide();
+        $("#currentOrders").hide();
+        $("#orderHistoryCard").hide();
+
+        //if we are in order history and order is less then 10 units, then submit button adds to the order history table, but does not pass the order to the database
+        $("#order-history").on("click", function (data) {
+            event.preventDefault();
+            $("#orderHistoryCard").show();
+            $("#currentOrderValidationCard").hide();
+            $("#order-submit").show();
+            $("#currentOrders").show();
+            $("#cardHeaderOne").html("<h3>Order History</h3>");
+            console.log("order history clicked");
+            $.get("/api/all", function (data) {
+                for (i = 0; i < data.length; i++) {
+                    var toyName = data[i].ToyName;
+                    var toyQuantity = data[i].ToyQuantity;
+                    var timeOrdered = data[i].created_at;
+
+                    console.log(moment(timeOrdered).format("LLL"));
+
+                    $("#columnHeaders").append("<tr><td>" + toyName + "</td><td>" + toyQuantity + "</td><td>" + moment(timeOrdered).format("LLL") + "</td></tr>")
+
+                }
+            })
+        })
+
+
+        //This is the original order submit button
+        //
+        $("#order-submit").on("click", function (event) {
+            event.preventDefault();
+
+
+            if ($("#toyQuantity").val().trim() > 10) {
+                //This is the red text warning if a user orders > 10 items
+                $("#quantityWarning").text("Are you sure you want to order " + $("#toyQuantity").val().trim() + " items?");
+                //This shows the div with the red text warning below the quantity input field
+                $("#quantityWarning").show();
+                //This shows the yes i'm sure... button right below form
+                // $("#warningConfirm").show();
+                //This hides the order submit button
+                $("#order-submit").hide();
+                //This hides the order history button
+                $("#order-history").show();
+                $("#quantityWarning").attr('style', 'color:red');
+
+
+                console.log(Number.isInteger(parseInt($("#toyQuantity").val().trim())));
+
+            }
+
+            if (Number.isInteger(parseInt($("#toyQuantity").val().trim()))) {
+                console.log("number is an integer mfucker");
+                $("#orderHistoryCard").hide();
+                $("#currentOrderValidationCard").show();
+                $("#orderConfirmTwo").show();
+
+                $("#cardHeaderTwo").html("<h3>Are you sure you want to submit this order?</h3>");
+
+
+                $("#columnHeadersTwo").append("<tr><td>" + $("#toyName").val().trim() + "</td><td>" + parseInt($("#toyQuantity").val().trim()) + "</td><td>" + moment().format("LLL") + "</td></tr>")
+                //this is the button that shows up on the bottom of the form "yes, I'm sure..."
+                //this button will send the single order directly to the database from the bottom of the form
+                //this button only shows if the order quantity is questionable, ie > 10 units
+                $("#orderConfirmTwo").on("click", function () {
+
+                    var newOrder = {
+                        ToyName: $("#toyName").val().trim(),
+                        ToyQuantity: parseInt($("#toyQuantity").val().trim()),
+                        created_at: moment().format("YYYY-MM-DD HH:mm:ss")
+                    }
+
+                    console.log(newOrder);
+
+                    $.post("/api/new", newOrder).then(function () {
+
+                        $.get("/api/all", function (data) {
+
+                        })
+
+                    })
+
+
+                });
+
+                //I think creating a newOrder variable here and doing the post/get here would pass through smaller quantity orders to the database
+                //probably should hide/show a separate card here instead of updating the card because if user clicks order history button prior to the submit button, then submissions uppend to the order history instead creating another layer of validation
+                $("#warningConfirm").on("click", function () {
+
+
+
+                    var newOrder = {
+                        ToyName: $("#toyName").val().trim(),
+                        ToyQuantity: parseInt($("#toyQuantity").val().trim()),
+                        created_at: moment().format("YYYY-MM-DD HH:mm:ss")
+                    }
+
+                    console.log(newOrder);
+
+                    $.post("/api/new", newOrder).then(function () {
+
+                        $.get("/api/all", function (data) {
+
+                        })
+
+                    })
+                })
+
+            } else {
+                alert("You did not enter an adequate quantity or you left key fields blank.")
+
+            }
+
+
+
+
+
+
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

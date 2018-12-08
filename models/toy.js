@@ -2,56 +2,61 @@ module.exports = function (sequelize, DataTypes) {
     var Toy = sequelize.define("Toy", {
         toyName: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
+            // allowNull: false,
+            // validate: {
+            //     len: [1]
+            // }
         },
         toyDescription: {
             type: DataTypes.TEXT,
-            allowNull: false,
-            len: [1]
+            // allowNull: false,
+            // len: [1]
         },
-        price: DataTypes.DECIMAL(13, 2),
-        unitStock: DataTypes.INTEGER,
+        price: {
+            type: DataTypes.DECIMAL(13, 2)
+        },
+
+        unitStock: {
+            type: DataTypes.INTEGER
+        },
         image: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            isUrl: true
+            type: DataTypes.TEXT,
+            // allowNull: false,
+            // isUrl: true
         },
         rating: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: { min: 1, max: 5 }
+            // allowNull: false,
+            // validate: { min: 1, max: 5 }
         },
         ageAbove: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            // allowNull: false
         },
         Q1: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: { min: 1, max: 5 }
+            // allowNull: false,
+            // validate: { min: 1, max: 5 }
         },
         Q2: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: { min: 1, max: 5 }
+            // allowNull: false,
+            // validate: { min: 1, max: 5 }
         },
         Q3: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: { min: 1, max: 5 }
+            // allowNull: false,
+            // validate: { min: 1, max: 5 }
         },
         Q4: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: { min: 1, max: 5 }
+            // allowNull: false,
+            // validate: { min: 1, max: 5 }
         },
         Q5: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: { min: 1, max: 5 }
+            // allowNull: false,
+            // validate: { min: 1, max: 5 }
         }
     }, {
             freezeTableName: true,          // Model tableName will be the same as the model name
@@ -80,7 +85,7 @@ module.exports = function (sequelize, DataTypes) {
     Toy.associate = function (models) {
         // ASSOCIATING TOY WITH ORDER
         Toy.hasMany(models.Order, {
-            
+
         });
     };
 
