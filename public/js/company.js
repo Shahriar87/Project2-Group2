@@ -99,12 +99,12 @@ $(document).ready(function () {
         var newToy = {
             toyName: $("#name").val().trim(),
             toyDescription: $("#description").val().trim(),
-            toyPrice: parseFloat($("#price").val().trim()),
-            toyQuantity: parseInt($("#quantity").val().trim()),
-            toyImage: $("#imageURL").val().trim(),
-            toyRating: parseInt($("#rating").val()),
-            ageLimit: parseInt($("#age").val()),
-            CategoryID: parseInt($("#toyCategory").val()),
+            price: parseFloat($("#price").val().trim()),
+            unitStock: parseInt($("#quantity").val().trim()),
+            image: $("#imageURL").val().trim(),
+            rating: parseInt($("#rating").val()),
+            ageAbove: parseInt($("#age").val()),
+            category_id: parseInt($("#toyCategory").val()),
             ManufacturerID: parseInt($("#toyManufacturer").val()),
             scores: [
                 parseInt($("#Q1").val()),

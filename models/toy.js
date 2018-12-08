@@ -27,7 +27,7 @@ module.exports = function (sequelize, DataTypes) {
         rating: {
             type: DataTypes.INTEGER,
             // allowNull: false,
-            validate: { min: 1, max: 5 }
+            // validate: { min: 1, max: 5 }
         },
         ageAbove: {
             type: DataTypes.INTEGER,
@@ -36,27 +36,27 @@ module.exports = function (sequelize, DataTypes) {
         Q1: {
             type: DataTypes.INTEGER,
             // allowNull: false,
-            validate: { min: 1, max: 5 }
+            // validate: { min: 1, max: 5 }
         },
         Q2: {
             type: DataTypes.INTEGER,
             // allowNull: false,
-            validate: { min: 1, max: 5 }
+            // validate: { min: 1, max: 5 }
         },
         Q3: {
             type: DataTypes.INTEGER,
             // allowNull: false,
-            validate: { min: 1, max: 5 }
+            // validate: { min: 1, max: 5 }
         },
         Q4: {
             type: DataTypes.INTEGER,
             // allowNull: false,
-            validate: { min: 1, max: 5 }
+            // validate: { min: 1, max: 5 }
         },
         Q5: {
             type: DataTypes.INTEGER,
             // allowNull: false,
-            validate: { min: 1, max: 5 }
+            // validate: { min: 1, max: 5 }
         }
     }, {
             freezeTableName: true,          // Model tableName will be the same as the model name
