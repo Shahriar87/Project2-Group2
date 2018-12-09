@@ -1,14 +1,16 @@
 /* EMPLOYEEINDEX.HTML CSS HERE */
-body{
-    background-image: url("giphy.gif");
+body {
+    background-image: url("./misc/xmas-background.png");
+    background-size: 100%, 700px;
     background-repeat: no-repeat;
-    background-size: 1500px 900px;
-}
-.card{
-    display: block;
-    margin: auto;
-    width: 65%;
-    opacity: 0.60;
+    }
+#b-card{
+    background-color: whitesmoke;
+    padding:20px;
+    /* width:710px; */
+    position:relative;
+    background: rgb(216, 216, 216); /* Fallback for older browsers without RGBA-support */
+    background: rgba(184, 184, 184, 0.5);
 }
 #button1,{
     display: inline-block;
@@ -18,10 +20,16 @@ body{
     font-size: 80px;
     color: #CFB53B; 
 }
-h5{
+h4 {
+    font-family: 'Parisienne', cursive;
+}
+h5 {
     font-family: 'Parisienne', cursive;
     font-size: 22pt;
+    color: rgb(196, 4, 4); 
+    text-align: center;
 }
+
 /* CUSTOMERINDEX.HTML CSS HERE */
 h6{
     color: beige;
@@ -95,9 +103,9 @@ h6{
 .container{
     height: 780px;
 }
-#admin-body{
+/* #admin-body{
     background-image: url("christmas-images-red-christmas-decorations-hd-wallpaper-and-within-christmas-ornament-wallpaper.jpg");
-}
+} */
 h2{
     font-family: 'Parisienne', cursive;
     font-size: 35pt;

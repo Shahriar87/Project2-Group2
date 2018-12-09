@@ -45,11 +45,11 @@ module.exports = function (app) {
 
   // LOAD CUSTOMER PAGE
   app.get("/customer", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+    // db.Example.findAll({}).then(function (dbExamples) {
       res.render("customerPage", {
         msg: "Christmas Toy Store"
       });
-    });
+    // });
   });
 
   // LOAD TOY PAGE

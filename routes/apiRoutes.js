@@ -20,21 +20,15 @@ module.exports = function (app) {
     });
   });
 
-  // GET Toy API
+  // GET TOY API
   app.get("/api/toys", function (req, res) {
     db.Toy.findAll({
-      //   attributes: [
-      //     "toyName", "toyDescription", "price", 
-      //   "unitStock", "image", "rating", "ageAbove", 
-      //   "Q1", "Q2", "Q3", "Q4", "Q5"
-      // ]
     }).then(function (dbToy) {
       res.json(dbToy);
-      // console.log(dbToy);
-    });
+    })
   });
 
-    // POST ROUTE FOR SAVING NEW TOY
+  // POST ROUTE FOR SAVING NEW TOY
   app.post("/api/toys", function (req, res) {
     console.log(req.body);
     db.Toy.create(req.body).then(function (dbToy) {
@@ -60,6 +54,55 @@ module.exports = function (app) {
     });
   });
 
+  // POST ROUTE FOR TOY RECOMMENDATION
+  app.post("/api/toy", function (req, res) {
+    db.Toy.findAll({
+      raw: true
+    }).then(function (
+      dbToy
+    ) {
+      var recommendedToyScore = req.body;
+      var recommendArray = [];
+
+      // console.log(dbToy[1].Q1)
+      // console.log(req.body.Q1);
+
+      for (var j = 0; j < 3; j++) {
+        var counterScore = 25;
+        var closestToy;
+        var index = -1;
+
+        for (var i = 0; i < dbToy.length; i++) {
+
+          var currentToyQ1 = dbToy[i].Q1;
+          var currentToyQ2 = dbToy[i].Q2;
+          var currentToyQ3 = dbToy[i].Q3;
+          var currentToyQ4 = dbToy[i].Q4;
+          var currentToyQ5 = dbToy[i].Q5;
+          var totalScore = 0;
+
+          totalScore = Math.abs(currentToyQ1 - recommendedToyScore.Q1)
+            + Math.abs(currentToyQ2 - recommendedToyScore.Q2)
+            + Math.abs(currentToyQ3 - recommendedToyScore.Q3)
+            + Math.abs(currentToyQ4 - recommendedToyScore.Q4)
+            + Math.abs(currentToyQ5 - recommendedToyScore.Q5)
+
+          if (totalScore <= counterScore) {
+            counterScore = totalScore;
+            closestToy = dbToy[i];
+            index = i;
+          }
+        }
+        recommendArray.push(closestToy);
+        dbToy.splice(index, 1);
+      }
+      // console.log(recommendArray);
+      res.json(recommendArray);
+    })
+  });
+
+
+
 
 
 
@@ -72,4 +115,6 @@ module.exports = function (app) {
       res.json(dbExample);
     });
   });
-};
+
+
+}
