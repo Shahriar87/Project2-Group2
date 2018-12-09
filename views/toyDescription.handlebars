@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="styles/toyPageStyle.css" media="screen" title="no title" charset="utf-8">
+
+<h1>{{msg}} : Product Page</h1>
+<h2>{{dbToy.toyName}}</h2>
+<!-- <center><div class="shopper-css">
+    <img id="cart-img" src="shopping.png" alt="shopping-cart" height="50" width="50">
+    <p>Check Out Here</p>
+    <button>Confirm Order</button>
+    <br>
+</div></center> -->
+<div class="container">
+    <div class="row seven-cols">
+        <div class="col-lg-1">Toy ID
+            <hr>
+            <div>
+                <h2>{{dbToy.id}}</h2>
+            </div>
+        </div>
+        <div class="col-lg-1">PRICE
+            <hr>
+            <div>
+                <h2>${{dbToy.price}}</h2>
+            </div>
+        </div>
+        <div class="col-lg-1">AGE REQ
+            <hr>
+            <div>
+                <h2>{{dbToy.ageAbove}} years+ </h2>
+            </div>
+        </div>
+        <div class="col-lg-1">QUANTITY
+            <hr>
+            <div>
+                <h2>{{dbToy.unitStock}}</h2>
+            </div>
+        </div>
+        <div class="col-lg-1">RATING
+            <hr>
+            <div>
+                <h2>{{dbToy.rating}} stars</h2>
+            </div>
+        </div>
+        <div id="image-col" class="col-lg-5">IMAGE
+            <hr>
+            <img src={{dbToy.image}} alt="toy" style="width:60%;">
+        </div>
+        <div id="description-col" class="col-lg-11">DESCRIPTION
+            <hr>
+            <div>
+                <p>{{dbToy.toyDescription}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

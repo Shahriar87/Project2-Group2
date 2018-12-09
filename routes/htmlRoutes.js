@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function (app) {
-  // Load index page
+  // LOAD INDEX PAGE
   app.get("/", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
       res.render("index", {
@@ -52,10 +52,30 @@ module.exports = function (app) {
     });
   });
 
+  // LOAD TOY PAGE
+  app.get("/toy/:id", function (req, res) {
+    db.Toy.findOne({
+      attributes: [
+        "id", "toyName", "toyDescription", "price", "ageAbove",
+        "rating", "unitStock", "image"
+      ],
+      where: { id: req.params.id },
+      raw: true
+    }).then(function (
+      dbToy
+    ) {
+      console.log(dbToy);
+      res.render("toyDescription", {
+        dbToy,
+        msg: "Christmas Toy Store"
+      });
+    });
+  });
 
 
 
-  
+
+
   // Load example page and pass in an example by id
   app.get("/example/:id", function (req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function (

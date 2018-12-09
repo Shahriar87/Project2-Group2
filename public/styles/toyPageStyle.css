@@ -1,0 +1,83 @@
+body{
+  background-color: #EB3323;
+}
+
+.container{
+    margin-top: 30px;
+    border-style: solid;
+  border-color: #000;
+  height: 790px;
+  margin-bottom: 50px;
+  background-color: white;
+  /* opacity: 0.75; */
+}
+.container:hover{
+  box-shadow: 6px 6px 25px #666;
+}
+h1{
+    text-align: center;
+    font-size: 3pc
+}
+
+h2{
+  text-align: center;
+}
+
+hr{
+    background-color: #EB3323;
+}
+.col-lg-1{
+  display: block;
+  margin-left: 25px;
+  border-style: solid;
+  border-color: #000;
+  height: 400px;
+  font-size: 10pt;
+}
+.seven-cols{
+    margin-top: 10px;
+    background-color: white;
+    /* opacity: 0.75; */
+}
+#image-col{
+    border-style: solid;
+  border-color: #000;
+  margin-left: 25px;
+  background-color: white;
+  /* opacity: 0.75; */
+}
+#description-col{
+    margin-top: 25px;
+    border-style: solid;
+  border-color: #000;
+  margin-left: 38px;
+  height: 300px;
+  background-color: white;
+  /* opacity: 0.75; */
+  overflow: scroll;
+}
+.shopper-css{
+  width: 15%;
+  margin-left: 900px;
+  border-style: solid;
+  border-color: #000;
+  background-color: white;
+  /* opacity: 0.75; */
+}
+button{
+  margin-bottom: 10px;
+}
+
+@media (min-width: 1200px) {
+    .seven-cols .col-md-1,
+    .seven-cols .col-sm-1,
+    .seven-cols .col-lg-1 {
+      width: 14.285714285714285714285714285714%;
+      *width: 14.285714285714285714285714285714%;
+    }
+  }
+  /* 14% = 100% (full-width row) divided by 7 */
+  
+  img{
+    max-width: 100%;
+  }

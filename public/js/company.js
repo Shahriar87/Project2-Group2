@@ -1,3 +1,29 @@
+// GET THE MODAL 1
+var modal = document.getElementById('myModal');
+
+// WHEN USER CLICKS X OR CLOSE BUTTON, BOTH MODAL CLOSES
+$('.close').on("click ", function () {
+  modal.style.display = "none";
+  modal2.style.display = "none";
+});
+
+// SHOW MODAL
+
+$("#categoryCreate").on("click", function () {
+  modal.style.display = "block";
+});
+
+// GET THE MODAL 2
+var modal2 = document.getElementById('myModal2');
+
+// SHOW MODAL
+
+$("#manufacturerCreate").on("click", function () {
+  modal2.style.display = "block";
+});
+
+
+
 $(document).ready(function () {
 
     $("#addInv").on("click", handleFormSubmit);
