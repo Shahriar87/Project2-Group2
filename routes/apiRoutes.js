@@ -61,6 +61,9 @@ module.exports = function (app) {
     }).then(function (
       dbToy
     ) {
+
+      // THE ALGORITHM FOR TOY RECOMMENDATION
+
       var recommendedToyScore = req.body;
       var recommendArray = [];
 
