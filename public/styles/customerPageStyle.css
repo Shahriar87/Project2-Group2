@@ -1,14 +1,16 @@
 /* EMPLOYEEINDEX.HTML CSS HERE */
 body {
-    background-image: url('/images/giphy.gif');
+    background-image: url("/images/xmas-background.png");
     background-size: 100%, 700px;
+    background-repeat: no-repeat;
     }
-
-.card{
-    display: block;
-    margin: auto;
-    width: 65%;
-    opacity: 0.60;
+#b-card{
+    background-color: whitesmoke;
+    padding:20px;
+    /* width:710px; */
+    position:relative;
+    background: rgb(216, 216, 216); /* Fallback for older browsers without RGBA-support */
+    background: rgba(184, 184, 184, 0.5);
 }
 #button1,{
     display: inline-block;
@@ -24,7 +26,7 @@ h4 {
 h5 {
     font-family: 'Parisienne', cursive;
     font-size: 22pt;
-    color: rgb(252, 207, 110);
+    color: rgb(196, 4, 4); 
     text-align: center;
 }
 
@@ -36,51 +38,16 @@ h6{
     margin: auto;
     text-align: center;
 }
-#exampleFormControlSelect1{
+.form-control{
     margin: auto;
     width: 90%;
     opacity: .87;
     color: black;
 }
-#exampleFormControlSelect1:hover{
+.form-control:hover{
     box-shadow: 6px 6px 15px white;
 }
-#exampleFormControlSelect2{
-    margin: auto;
-    width: 90%;
-    opacity: .87;
-    color: black;
-}
-#exampleFormControlSelect2:hover{
-    box-shadow: 6px 6px 15px white;
-}
-#exampleFormControlSelect3{
-    margin: auto;
-    width: 90%;
-    opacity: .87;
-    color: black; 
-}
-#exampleFormControlSelect3:hover{
-    box-shadow: 6px 6px 15px white;
-}
-#exampleFormControlSelect4{
-    margin: auto;
-    width: 90%;
-    opacity: .87; 
-    color: black; 
-}
-#exampleFormControlSelect4:hover{
-    box-shadow: 6px 6px 15px white;
-}
-#exampleFormControlSelect5{
-    margin: auto;
-    width: 90%;
-    opacity: .87;
-    color: black; 
-}
-#exampleFormControlSelect5:hover{
-    box-shadow: 6px 6px 15px white;
-}
+
 .btn-secondary{
     margin: auto;
     width: 90%;
@@ -91,11 +58,6 @@ h6{
     box-shadow: 6px 6px 15px #D14641;
     background-color: green;
 }
-
-
-
-
-
 
 /* ADMIN INDEXES CSS HERE */
 .container{
@@ -132,7 +94,42 @@ font-family: 'Parisienne', cursive;
 }
 
 
+/* THE MODAL BACKGROUND */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* MODAL CONTENT BOX */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* CLOSE BUTTON STYLE */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 
-
-/* SEQUELIZE BUTTONS CSS HERE */

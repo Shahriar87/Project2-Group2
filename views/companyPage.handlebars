@@ -7,6 +7,38 @@
         <div class="col-4">
             <form id="inventoryForm">
                 <div class="form-group">
+                    <label for="toyCategory">Toy Category</label>
+                    <select class="form-control" id="toyCategory">
+                        <option value="" selected="selected">select a value</option>
+                        {{#each dbCategory}}
+                        <option value={{id}}>
+                            {{categoryName}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <p>* if its a new category,
+                        <button type="button" id="categoryCreate" class="btn btn-secondary btn-sm btn-block">
+                            create category!
+                        </button>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="toyManufacturer">Manufacturer</label>
+                    <select class="form-control" id="toyManufacturer">
+                        <option value="" selected="selected">select a value</option>
+                        {{#each dbManufacturer}}
+                        <option value={{id}}>
+                            {{manufacturerName}}
+                        </option>
+                        {{/each}}
+                    </select>
+                    <p>* if its a new manufacturer,
+                        <button type="button" id="manufacturerCreate" class="btn btn-secondary btn-sm btn-block">
+                            create manufacturer!
+                        </button>
+                    </p>
+                </div>
+                <div class="form-group">
                     <label for="name">Toy Name</label>
                     <input type="text" class="form-control" id="name" placeholder="name">
                 </div>
@@ -49,7 +81,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Q1">Q1 Score</label>
+                    <label for="Q1">Reckless Level</label>
                     <select class="form-control validate" id="Q1">
                         <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
@@ -60,7 +92,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Q2">Q2 Score</label>
+                    <label for="Q2">Annoying Level</label>
                     <select class="form-control validate" id="Q2">
                         <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
@@ -71,7 +103,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Q3">Q3 Score</label>
+                    <label for="Q3">Strategic Level</label>
                     <select class="form-control validate" id="Q3">
                         <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
@@ -82,7 +114,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Q4">Q4 Score</label>
+                    <label for="Q4">Dexterous Level</label>
                     <select class="form-control validate" id="Q4">
                         <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
@@ -93,7 +125,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Q5">Q5 Score</label>
+                    <label for="Q5">Antisocial Level</label>
                     <select class="form-control validate" id="Q5">
                         <option value="" selected="selected">select a value</option>
                         <option value="1">1</option>
@@ -102,38 +134,6 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="toyCategory">Toy Category</label>
-                    <select class="form-control" id="toyCategory">
-                        <option value="" selected="selected">select a value</option>
-                        {{#each dbCategory}}
-                        <option value= {{id}}>
-                            {{categoryName}}
-                        </option>
-                        {{/each}}
-                    </select>
-                    <p>* if its a new category,
-                        <button type="button" id="categoryCreate" class="btn btn-secondary btn-sm btn-block">
-                            create category!
-                        </button>
-                    </p>
-                </div>
-                <div class="form-group">
-                    <label for="toyManufacturer">Manufacturer</label>
-                    <select class="form-control" id="toyManufacturer">
-                        <option value="" selected="selected">select a value</option>
-                        {{#each dbManufacturer}}
-                        <option value= {{id}}>
-                            {{manufacturerName}}
-                        </option>
-                        {{/each}}
-                    </select>
-                    <p>* if its a new manufacturer,
-                        <button type="button" id="manufacturerCreate" class="btn btn-secondary btn-sm btn-block">
-                            create manufacturer!
-                        </button>
-                    </p>
                 </div>
                 <button type="submit" id="addInv" class="btn btn-secondary btn-lg btn-block submit">Add to Inventory</button>
             </form>
@@ -152,17 +152,16 @@
                 <tr>
                     <td>{{id}}</td>
                     <td>
-                        <a href="#">
+                        <a href="/toy/{{id}}">
                             <img src={{image}} alt="toy" style="width:100px">
+                            {{toyName}}
                         </a>
-                        {{toyName}}
                     </td>
                     <td>{{price}}</td>
                     <td>{{unitStock}}</td>
                 </tr>
                 {{/each}}
             </table>
-
         </div>
 
         <a href="/">← Back To Home</a>
@@ -190,9 +189,10 @@
                                     <tr id="form-row">
                                         <form id="author-form">
                                             <td colspan="4">
-                                                <input placeholder="Enter a name" id="author-name" type="text" />
+                                                <input placeholder="Enter a category name" id="cate-name" type="text" />
                                             </td>
-                                            <td><button type="submit" class="btn btn-danger">Create Category</button>
+                                            <td><button type="submit" id="catButton" class="btn btn-danger">Create
+                                                    Category</button>
                                             </td>
                                         </form>
                                     </tr>
@@ -231,9 +231,10 @@
                                     <tr id="form-row">
                                         <form id="author-form">
                                             <td colspan="4">
-                                                <input placeholder="Enter a name" id="author-name" type="text" />
+                                                <input placeholder="Enter a manufacturer name" id="manu-name" type="text" />
                                             </td>
-                                            <td><button type="submit" class="btn btn-danger">Create Manufacturer</button>
+                                            <td><button type="submit" id="manButton" class="btn btn-danger">Create
+                                                    Manufacturer</button>
                                             </td>
                                         </form>
                                     </tr>
@@ -250,5 +251,6 @@
 
     </div>
 
-
 </div>
+
+<script src="js/company.js" type="text/javascript"></script>
