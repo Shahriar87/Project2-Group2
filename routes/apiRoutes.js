@@ -104,6 +104,23 @@ module.exports = function (app) {
     })
   });
 
+  // POST ROUTE FOR USER PREFERENCE SAVING
+  app.put("/api/user", function (req, res) {
+    console.log(req.body);
+    db.user.update({
+      Q1: req.body.Q1,
+      Q2: req.body.Q2,
+      Q3: req.body.Q3,
+      Q4: req.body.Q4,
+      Q5: req.body.Q5,
+    }, {
+        where: {
+          id: req.body.id
+        }
+      }).then(function (dbUser) {
+        res.json(dbUser);
+      })
+  });
 
 
 

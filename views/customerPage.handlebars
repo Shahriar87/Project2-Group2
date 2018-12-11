@@ -7,6 +7,7 @@
 
 <h4 class="card-title">{{msg}}</h4>
 <div id="b-card" class="card-body container jumbotron">
+    <h2><strong>Welcome<span id="userID" style="visibility:hidden;">{{dbUser.id}}</span> {{dbUser.firstname}} {{dbUser.lastname}}!</strong></h2>
     <div class="form-group">
         <h5 for="exampleFormControlSelect1">1. Is your child reckless?</h5>
 
@@ -93,10 +94,7 @@
 
     </div>
 
-
-
-
-    <a href="/">← Back To Home</a>
+    <a href="/logout"><input class="btn" type="submit" value="Sign out" /></a>
 
 </div>
 

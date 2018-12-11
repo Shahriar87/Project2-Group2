@@ -28,36 +28,47 @@ $("#findToy").on("click", function (event) {
 
     if (validateSurvey() === true) {
 
-    var customerPref = {
-        Q1: $("#Q1").val(),
-        Q2: $("#Q2").val(),
-        Q3: $("#Q3").val(),
-        Q4: $("#Q4").val(),
-        Q5: $("#Q5").val()
-    }
+        var customerPref = {
+            id: $("#userID").text(),
+            Q1: $("#Q1").val(),
+            Q2: $("#Q2").val(),
+            Q3: $("#Q3").val(),
+            Q4: $("#Q4").val(),
+            Q5: $("#Q5").val()
+        }
 
-    // console.log(customerPref);
+        // console.log(customerPref);
 
-    // POST REQUEST TO SHOW RECOMMEND TOY
+        // POST REQUEST TO SHOW RECOMMEND TOY
+        $.post("/api/toy", customerPref, function (data) {
+            $('#recommendPhoto1').attr("src", data[0].image);
+            $('#toyLink1').attr("href", "/toy/" + data[0].id);
 
-    $.post("/api/toy", customerPref, function (data) {
-        $('#recommendPhoto1').attr("src", data[0].image);
-        $('#toyLink1').attr("href", "/toy/" + data[0].id);
+            $('#recommendPhoto2').attr("src", data[1].image);
+            $('#toyLink2').attr("href", "/toy/" + data[1].id);
 
-        $('#recommendPhoto2').attr("src", data[1].image);
-        $('#toyLink2').attr("href", "/toy/" + data[1].id);
+            $('#recommendPhoto3').attr("src", data[2].image);
+            $('#toyLink3').attr("href", "/toy/" + data[2].id);
+        });
 
-        $('#recommendPhoto3').attr("src", data[2].image);
-        $('#toyLink3').attr("href", "/toy/" + data[2].id);
-    });
 
-    modal.style.display = "block";
+        // POST REQUEST TO ADD USER PREFERENCE
+        updateUser(customerPref);
+        function updateUser(data) {
+            $.ajax({
+                method: "PUT",
+                url: "/api/user",
+                data: data
+            })
+        };
 
-    $("#Q1").val("");
-    $("#Q2").val("");
-    $("#Q3").val("");
-    $("#Q4").val("");
-    $("#Q5").val("");
+        modal.style.display = "block";
+
+        $("#Q1").val("");
+        $("#Q2").val("");
+        $("#Q3").val("");
+        $("#Q4").val("");
+        $("#Q5").val("");
 
     } else {
         alert("Please fill out all fields!");
