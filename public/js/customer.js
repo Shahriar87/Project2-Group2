@@ -1,9 +1,30 @@
-// GET THE MODAL 1
+// GET THE MODALS
 var modal = document.getElementById('myModal');
+var modal2 = document.getElementById('myModal2');
+
+
+// INITIAL MODAL
+$(window).on('load', function () {
+    modal2.style.display = "block";
+
+    $.get("/api/toy", function (data) {
+        $('#recommendPhoto4').attr("src", data[0].image);
+        $('#toyLink4').attr("href", "/toy/" + data[0].id);
+
+        $('#recommendPhoto5').attr("src", data[1].image);
+        $('#toyLink5').attr("href", "/toy/" + data[1].id);
+
+        $('#recommendPhoto6').attr("src", data[2].image);
+        $('#toyLink6').attr("href", "/toy/" + data[2].id);
+    })
+});
+
 
 // WHEN USER CLICKS X OR CLOSE BUTTON, BOTH MODAL CLOSES
 $(".close").on("click ", function () {
     modal.style.display = "none";
+    modal2.style.display = "none";
+
 });
 
 // SHOW MODAL
@@ -76,3 +97,4 @@ $("#findToy").on("click", function (event) {
     return false;
 
 });
+

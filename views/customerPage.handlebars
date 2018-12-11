@@ -94,6 +94,29 @@
 
     </div>
 
+    <!-- THE INITIAL PAGE LOAD MODAL -->
+
+    <div id="myModal2" class="modal">
+
+        <!-- MODAL CONTENT -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title"><strong>Welcome!<span id="userID" style="visibility:hidden;">{{dbUser.id}}</span> {{dbUser.firstname}} {{dbUser.lastname}}!</strong></h2>
+            </div>
+            <div class="modal-body">
+                <h2>Your previously recommended toys were:</h2>
+                <a id="toyLink4"><img id="recommendPhoto4" alt="Recommended Toy1" style="width:20%;"></a>
+                <a id="toyLink5"><img id="recommendPhoto5" alt="Recommended Toy2" style="width:20%;"></a>
+                <a id="toyLink6"><img id="recommendPhoto6" alt="Recommended Toy3" style="width:20%;"></a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+
     <a href="/logout"><input class="btn" type="submit" value="Sign out" /></a>
 
 </div>
