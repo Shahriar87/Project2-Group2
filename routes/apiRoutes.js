@@ -58,7 +58,7 @@ module.exports = function (app) {
   app.get("/api/toy", function (req, res) {
     db.user.findOne({
       attributes: [
-        "id", "Q1", "Q2", "Q3", "Q4", "Q5"
+        "id", "Q1", "Q2", "Q3", "Q4", "Q5", "createdAt", "updatedAt"
       ],
       where: { id: req.user.id },
       raw: true
@@ -105,8 +105,13 @@ module.exports = function (app) {
           recommendArray.push(closestToy);
           dbToy.splice(index, 1);
         }
+
+        var dbStuff = {
+          dbUser,
+          recommendArray: recommendArray
+        }
         // console.log(recommendArray);
-        res.json(recommendArray);
+        res.json(dbStuff);
       })
     });
   });

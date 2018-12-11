@@ -5,17 +5,23 @@ var modal2 = document.getElementById('myModal2');
 
 // INITIAL MODAL
 $(window).on('load', function () {
-    modal2.style.display = "block";
 
-    $.get("/api/toy", function (data) {
-        $('#recommendPhoto4').attr("src", data[0].image);
-        $('#toyLink4').attr("href", "/toy/" + data[0].id);
+// ONLY SHOW RECOMMENDED TOYS IF CUSTOMER HAS PEVIOUSLY COMPLETED THE SURVEY
+    $.get("/api/toy", function (data) {      
 
-        $('#recommendPhoto5').attr("src", data[1].image);
-        $('#toyLink5').attr("href", "/toy/" + data[1].id);
+        if (data.dbUser.createdAt != data.dbUser.updatedAt) {
 
-        $('#recommendPhoto6').attr("src", data[2].image);
-        $('#toyLink6').attr("href", "/toy/" + data[2].id);
+            modal2.style.display = "block";
+
+            $('#recommendPhoto4').attr("src", data.recommendArray[0].image);
+            $('#toyLink4').attr("href", "/toy/" + data.recommendArray[0].id);
+
+            $('#recommendPhoto5').attr("src", data.recommendArray[1].image);
+            $('#toyLink5').attr("href", "/toy/" + data.recommendArray[1].id);
+
+            $('#recommendPhoto6').attr("src", data.recommendArray[2].image);
+            $('#toyLink6').attr("href", "/toy/" + data.recommendArray[2].id);
+        }
     })
 });
 
