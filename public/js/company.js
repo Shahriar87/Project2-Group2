@@ -1,15 +1,30 @@
+// GET THE MODAL 1
+var modal = document.getElementById('myModal');
+
+// WHEN USER CLICKS X OR CLOSE BUTTON, BOTH MODAL CLOSES
+$('.close').on("click ", function () {
+  modal.style.display = "none";
+  modal2.style.display = "none";
+});
+
+// SHOW MODAL
+
+$("#categoryCreate").on("click", function () {
+  modal.style.display = "block";
+});
+
+// GET THE MODAL 2
+var modal2 = document.getElementById('myModal2');
+
+// SHOW MODAL
+
+$("#manufacturerCreate").on("click", function () {
+  modal2.style.display = "block";
+});
+
+
+
 $(document).ready(function () {
-
-    var name = $("#name").val().trim();
-    var description = $("#description").val().trim();
-    var price = $("#price").val().trim();
-    var quantity = $("#quantity").val().trim();
-    var image = $("#imageURL").val().trim();
-    var rating = $("#rating").val();
-    var age = $("#age").val();
-    var category = $("#toyCategory").val();
-    var manufacturer = $("#toyManufacturer").val();
-
 
     $("#addInv").on("click", handleFormSubmit);
 
@@ -43,76 +58,89 @@ $(document).ready(function () {
     function handleFormSubmit(event) {
         event.preventDefault();
 
+        var name = $("#name").val().trim();
+        var description = $("#description").val().trim();
+        var price = $("#price").val().trim();
+        var quantity = $("#quantity").val().trim();
+        var image = $("#imageURL").val().trim();
+        var rating = $("#rating").val();
+        var age = $("#age").val();
+        var category = $("#toyCategory").val();
+        var manufacturer = $("#toyManufacturer").val();
+
         // VALIDATE FUNCTION
-        // function validateForm() {
-        //     var valid = true;
+        function validateForm() {
+            var valid = true;
 
-        //     // VERIFY FIELDS
-        //     if (name === "") {
-        //         valid = false;
-        //     };
-        //     if (description === "") {
-        //         valid = false;
-        //     };
-        //     if (price === "") {
-        //         valid = false;
-        //     };
-        //     if (quantity === "") {
-        //         valid = false;
-        //     };
-        //     if (rating === "") {
-        //         valid = false;
-        //     };
-        //     if (age === "") {
-        //         valid = false;
-        //     };
-        //     if (category === "") {
-        //         valid = false;
-        //     };
-        //     if (manufacturer === "") {
-        //         valid = false;
-        //     };
+            // VERIFY FIELDS
+            if (name === "") {
+                valid = false;
+            };
+            if (description === "") {
+                valid = false;
+            };
+            if (price === "") {
+                valid = false;
+            };
+            if (quantity === "") {
+                valid = false;
+            };
+            if (rating === "") {
+                valid = false;
+            };
+            if (age === "") {
+                valid = false;
+            };
+            if (category === "") {
+                valid = false;
+            };
+            if (manufacturer === "") {
+                valid = false;
+            };
 
-        //     // VERIFY PHOTO URL
-        //     var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-        //     if (image === "") {
-        //         valid = false;
-        //     } else if ((!regex.test(photoUrl))) {
-        //         alert("Please write a valid image source URL!");
-        //         valid = false;
-        //     }
-        //     // VERIFY THE SCORES
-        //     $('.validate').each(function () {
-        //         // console.log($(this).val());
-        //         if ($(this).val() === "") {
-        //             valid = false;
-        //         }
-        //     });
-        //     return valid;
-        // }
+            // VERIFY PHOTO URL
+            var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+            if (image === "") {
+                valid = false;
+            } else if ((!regex.test(image))) {
+                alert("Please write a valid image source URL!");
+                valid = false;
+            }
+            // VERIFY THE SCORES
+            $('.validate').each(function () {
+                // console.log($(this).val());
+                if ($(this).val() === "") {
+                    valid = false;
+                }
+            });
+            return valid;
+        }
+
+        console.log(validateForm());
+
+
+
 
         // GRAB DATA
-        // if (validateForm() === false) {
-        //     return;
-        // }
+        if (validateForm() === false) {
+            return;
+        }
         // Constructing a newToy object to hand to the database
         var newToy = {
-            toyName: $("#name").val().trim(),
-            toyDescription: $("#description").val().trim(),
-            price: parseFloat($("#price").val().trim()),
-            unitStock: parseInt($("#quantity").val().trim()),
-            image: $("#imageURL").val().trim(),
-            rating: parseInt($("#rating").val()),
-            ageAbove: parseInt($("#age").val()),
-            category_id: parseInt($("#toyCategory").val()),
-            ManufacturerID: parseInt($("#toyManufacturer").val()),
-            scores: [
-                parseInt($("#Q1").val()),
-                parseInt($("#Q2").val()),
-                parseInt($("#Q3").val()),
-                parseInt($("#Q4").val()),
-                parseInt($("#Q5").val())
-            ]
+            toyName: name,
+            toyDescription: description,
+            price: parseFloat(price),
+            unitStock: parseInt(quantity),
+            image: image,
+            rating: parseInt(rating),
+            ageAbove: parseInt(age),
+            category_id: parseInt(category),
+            manufacturer_id: parseInt(manufacturer),
+            Q1: parseInt($("#Q1").val()),
+            Q2: parseInt($("#Q2").val()),
+            Q3: parseInt($("#Q3").val()),
+            Q4: parseInt($("#Q4").val()),
+            Q5: parseInt($("#Q5").val())
         };
 
         console.log(newToy);
@@ -133,7 +161,7 @@ $(document).ready(function () {
         $.post("/api/toys", toy, function () {
             console.log("Added new toy: " + toy);
             //RELOAD PAGE
-            // location.reload();
+            location.reload();
         })
     }
 
@@ -195,6 +223,65 @@ $(document).ready(function () {
     //     // authorSelect.append(rowsToAdd);
     //     // authorSelect.val(authorId);
     // }
+
+    // ADDING A NEW CATEGORY
+
+    $("#catButton").on("click", function (event) {
+        event.preventDefault();
+
+        var cateInp = $("#cate-name").val().trim()
+
+        // VALIDATE INPUT
+        if (cateInp === "") {
+            return;
+        }
+        // FETCH INPUT
+        upsertCategory({
+            categoryName: cateInp
+        });
+
+        function upsertCategory(categoryData) {
+            $.post("/api/category", categoryData, function () {
+                console.log("Added new category: " + categoryData);
+                //RELOAD PAGE
+                location.reload();
+            });
+        }
+    });
+
+
+
+    $("#manButton").on("click", function (event) {
+        event.preventDefault();
+
+        var manuInp = $("#manu-name").val().trim()
+
+        // VALIDATE INPUT
+        if (manuInp === "") {
+            return;
+        }
+        // FETCH INPUT
+        upsertManuf({
+            manufacturerName: manuInp
+        });
+
+        function upsertManuf(manufacturerData) {
+            $.post("/api/manufacturer", manufacturerData, function () {
+                console.log("Added new manufacturer: " + manufacturerData);
+                //RELOAD PAGE
+                location.reload();
+            });
+        }
+    });
+
+
+
+
+
+
+
+
+
 
 
 });

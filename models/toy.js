@@ -2,15 +2,15 @@ module.exports = function (sequelize, DataTypes) {
     var Toy = sequelize.define("Toy", {
         toyName: {
             type: DataTypes.STRING,
-            // allowNull: false,
-            // validate: {
-            //     len: [1]
-            // }
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
         },
         toyDescription: {
             type: DataTypes.TEXT,
-            // allowNull: false,
-            // len: [1]
+            allowNull: false,
+            len: [1]
         },
         price: {
             type: DataTypes.DECIMAL(13, 2)
@@ -21,42 +21,42 @@ module.exports = function (sequelize, DataTypes) {
         },
         image: {
             type: DataTypes.TEXT,
-            // allowNull: false,
-            // isUrl: true
+            allowNull: false,
+            isUrl: true
         },
         rating: {
             type: DataTypes.INTEGER,
-            // allowNull: false,
-            // validate: { min: 1, max: 5 }
+            allowNull: false,
+            validate: { min: 1, max: 5 }
         },
         ageAbove: {
             type: DataTypes.INTEGER,
-            // allowNull: false
+            allowNull: false
         },
         Q1: {
             type: DataTypes.INTEGER,
-            // allowNull: false,
-            // validate: { min: 1, max: 5 }
+            allowNull: false,
+            validate: { min: 1, max: 5 }
         },
         Q2: {
             type: DataTypes.INTEGER,
-            // allowNull: false,
-            // validate: { min: 1, max: 5 }
+            allowNull: false,
+            validate: { min: 1, max: 5 }
         },
         Q3: {
             type: DataTypes.INTEGER,
-            // allowNull: false,
-            // validate: { min: 1, max: 5 }
+            allowNull: false,
+            validate: { min: 1, max: 5 }
         },
         Q4: {
             type: DataTypes.INTEGER,
-            // allowNull: false,
-            // validate: { min: 1, max: 5 }
+            allowNull: false,
+            validate: { min: 1, max: 5 }
         },
         Q5: {
             type: DataTypes.INTEGER,
-            // allowNull: false,
-            // validate: { min: 1, max: 5 }
+            allowNull: false,
+            validate: { min: 1, max: 5 }
         }
     }, {
             freezeTableName: true,          // Model tableName will be the same as the model name
