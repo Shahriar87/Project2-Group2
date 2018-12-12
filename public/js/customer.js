@@ -14,13 +14,14 @@ $(window).on('load', function () {
             modal2.style.display = "block";
 
             $('#recommendPhoto4').attr("src", data.recommendArray[0].image);
-            $('#toyLink4').attr("href", "/toy/" + data.recommendArray[0].id);
+            $('#toyLink4').attr("href", "/customer/" + data.dbUser.id +  "/toy/" + data.recommendArray[0].id);
 
             $('#recommendPhoto5').attr("src", data.recommendArray[1].image);
-            $('#toyLink5').attr("href", "/toy/" + data.recommendArray[1].id);
+            $('#toyLink5').attr("href", "/customer/" + data.dbUser.id +  "/toy/" + data.recommendArray[1].id);
 
             $('#recommendPhoto6').attr("src", data.recommendArray[2].image);
-            $('#toyLink6').attr("href", "/toy/" + data.recommendArray[2].id);
+            $('#toyLink6').attr("href", "/customer/" + data.dbUser.id +  "/toy/" + data.recommendArray[2].id);
+
         }
     })
 });
@@ -68,14 +69,14 @@ $("#findToy").on("click", function (event) {
 
         // POST REQUEST TO SHOW RECOMMEND TOY
         $.post("/api/toy", customerPref, function (data) {
-            $('#recommendPhoto1').attr("src", data[0].image);
-            $('#toyLink1').attr("href", "/toy/" + data[0].id);
+            $('#recommendPhoto1').attr("src", data.recommendArray[0].image);
+            $('#toyLink1').attr("href", "/customer/" + data.dbUser.id +  "/toy/" + data.recommendArray[0].id);
 
-            $('#recommendPhoto2').attr("src", data[1].image);
-            $('#toyLink2').attr("href", "/toy/" + data[1].id);
+            $('#recommendPhoto2').attr("src", data.recommendArray[0].image);
+            $('#toyLink2').attr("href", "/customer/" + data.dbUser.id +  "/toy/" + data.recommendArray[1].id);
 
-            $('#recommendPhoto3').attr("src", data[2].image);
-            $('#toyLink3').attr("href", "/toy/" + data[2].id);
+            $('#recommendPhoto3').attr("src", data.recommendArray[0].image);
+            $('#toyLink3').attr("href", "/customer/" + data.dbUser.id +  "/toy/" + data.recommendArray[2].id);
         });
 
 

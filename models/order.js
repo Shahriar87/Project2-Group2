@@ -1,6 +1,14 @@
 module.exports = function (sequelize, DataTypes) {
     var Order = sequelize.define("Order", {
-        orderQuantity: {
+        
+        ToyName: {
+            type: DataTypes.STRING
+        },
+        
+        price: {
+            type: DataTypes.DECIMAL(13, 2)
+        },
+        ToyQuantity: {
             type: DataTypes.INTEGER
         },
         totalCost: {
@@ -12,23 +20,23 @@ module.exports = function (sequelize, DataTypes) {
             underscored: false
         });
 
-    Order.associate = function (models) {
-        // Order should belong to an Toy
-        Order.belongsTo(models.Toy, {
-            foreignKey: {
-                allowNull: true
-            }
-        });
-    };
+    // Order.associate = function (models) {
+    //     // Order should belong to an Toy
+    //     Order.belongsTo(models.Toy, {
+    //         foreignKey: {
+    //             allowNull: true
+    //         }
+    //     });
+    // };
 
-    Order.associate = function (models) {
-        // Order should belong to an User
-        Order.belongsTo(models.user, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Order.associate = function (models) {
+    //     // Order should belong to an User
+    //     Order.belongsTo(models.user, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
 
     return Order;
 };

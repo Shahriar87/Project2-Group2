@@ -119,52 +119,65 @@ module.exports = function (app) {
 
   // POST ROUTE FOR TOY RECOMMENDATION
   app.post("/api/toy", function (req, res) {
-    db.Toy.findAll({
+    db.user.findOne({
+      attributes: [
+        "id"
+      ],
+      where: { id: req.user.id },
       raw: true
-    }).then(function (
-      dbToy
-    ) {
+    }).then(function (dbUser) {
+      db.Toy.findAll({
+        raw: true
+      }).then(function (
+        dbToy
+      ) {
+        // THE ALGORITHM FOR TOY RECOMMENDATION
 
-      // THE ALGORITHM FOR TOY RECOMMENDATION
+        var recommendedToyScore = req.body;
+        var recommendArray = [];
 
-      var recommendedToyScore = req.body;
-      var recommendArray = [];
+        // console.log(dbToy[1].Q1)
+        // console.log(req.body.Q1);
 
-      // console.log(dbToy[1].Q1)
-      // console.log(req.body.Q1);
+        for (var j = 0; j < 3; j++) {
+          var counterScore = 25;
+          var closestToy;
+          var index = -1;
 
-      for (var j = 0; j < 3; j++) {
-        var counterScore = 25;
-        var closestToy;
-        var index = -1;
+          for (var i = 0; i < dbToy.length; i++) {
 
-        for (var i = 0; i < dbToy.length; i++) {
+            var currentToyQ1 = dbToy[i].Q1;
+            var currentToyQ2 = dbToy[i].Q2;
+            var currentToyQ3 = dbToy[i].Q3;
+            var currentToyQ4 = dbToy[i].Q4;
+            var currentToyQ5 = dbToy[i].Q5;
+            var totalScore = 0;
 
-          var currentToyQ1 = dbToy[i].Q1;
-          var currentToyQ2 = dbToy[i].Q2;
-          var currentToyQ3 = dbToy[i].Q3;
-          var currentToyQ4 = dbToy[i].Q4;
-          var currentToyQ5 = dbToy[i].Q5;
-          var totalScore = 0;
+            totalScore = Math.abs(currentToyQ1 - recommendedToyScore.Q1)
+              + Math.abs(currentToyQ2 - recommendedToyScore.Q2)
+              + Math.abs(currentToyQ3 - recommendedToyScore.Q3)
+              + Math.abs(currentToyQ4 - recommendedToyScore.Q4)
+              + Math.abs(currentToyQ5 - recommendedToyScore.Q5)
 
-          totalScore = Math.abs(currentToyQ1 - recommendedToyScore.Q1)
-            + Math.abs(currentToyQ2 - recommendedToyScore.Q2)
-            + Math.abs(currentToyQ3 - recommendedToyScore.Q3)
-            + Math.abs(currentToyQ4 - recommendedToyScore.Q4)
-            + Math.abs(currentToyQ5 - recommendedToyScore.Q5)
-
-          if (totalScore <= counterScore) {
-            counterScore = totalScore;
-            closestToy = dbToy[i];
-            index = i;
+            if (totalScore <= counterScore) {
+              counterScore = totalScore;
+              closestToy = dbToy[i];
+              index = i;
+            }
           }
+          recommendArray.push(closestToy);
+          dbToy.splice(index, 1);
         }
-        recommendArray.push(closestToy);
-        dbToy.splice(index, 1);
-      }
-      // console.log(recommendArray);
-      res.json(recommendArray);
-    })
+        // console.log(recommendArray);
+
+        var dbStuff = {
+          dbUser,
+          recommendArray: recommendArray
+        }
+        // console.log(recommendArray);
+        res.json(dbStuff);
+      })
+    });
   });
 
   // POST ROUTE FOR USER PREFERENCE SAVING
@@ -185,9 +198,43 @@ module.exports = function (app) {
       })
   });
 
+  // ORDER PAGE API
+  app.get("/api/all", function (req, res) {
+    db.Order.findAll({}).then(function (results) {
+      // results are available to us inside the .then
+      res.json(results);
+    });
 
+  });
 
+  app.get("/api/last", function (req, res) {
+    db.Order.findAll({
+      limit: 1,
+      order: [['createdAt', 'DESC']]
+    }).then(function (results) {
+      //only difference is that you get users list limited to 1
+      //entries[0]
+      res.json(results);
+    });
+  });
 
+  app.post("/api/new", function (req, res) {
+
+    console.log("Orders Data:");
+    console.log(req.body);
+
+    db.Order.create({
+      ToyName: req.body.ToyName,
+      ToyQuantity: req.body.ToyQuantity,
+      price: req.body.price,
+      totalCost: req.body.ToyQuantity * req.body.price,
+      createdAt: req.body.createdAt
+    }).then(function (results) {
+      // `results` here would be the newly created chirp
+      res.end();
+    });
+
+  });
 
   // Delete an example by id
   app.delete("/api/examples/:id", function (req, res) {

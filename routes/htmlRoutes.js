@@ -1,5 +1,7 @@
 var db = require("../models");
 
+var path = require("path");
+
 module.exports = function (app) {
 
   var passport = require('passport')
@@ -63,7 +65,27 @@ module.exports = function (app) {
     });
   });
 
-  // LOAD TOY PAGE
+  // LOAD TOY PURCHASE PAGE
+  app.get("/customer/:id/toy/:id", function (req, res) {
+    db.Toy.findOne({
+      attributes: [
+        "id", "toyName", "toyDescription", "price", "ageAbove",
+        "rating", "unitStock", "image"
+      ],
+      where: { id: req.params.id },
+      raw: true
+    }).then(function (
+      dbToy
+    ) {
+      // console.log(dbToy);
+      res.render("toyPurchase", {
+        dbToy,
+        msg: "Christmas Toy Store"
+      });
+    });
+  });
+
+  // LOAD TOY DESCRIPTION PAGE
   app.get("/toy/:id", function (req, res) {
     db.Toy.findOne({
       attributes: [
@@ -83,6 +105,29 @@ module.exports = function (app) {
     });
   });
 
+  // LOAD ORDER PAGE
+  app.get("/order/customer/toy/:id", function (req, res) {
+    db.Toy.findOne({
+      attributes: [
+        "id", "toyName", "price", "unitStock"
+      ],
+      where: { id: req.params.id },
+      raw: true
+    }).then(function (dbToy) {
+      res.render("orderPage", {
+        dbToy,
+        msg: "Christmas Toy Store"
+      });
+    });
+  });
+
+  // LOAD RECEIPT PAGE
+  app.get("/orderConfirm", function (req, res) {
+    res.sendFile(path.join(__dirname, "../views/orderSummary.html"));
+  });
+
+
+
   // SEQUELIZE PASSPORT CODES:
   // LOAD SIGNUP PAGE
   app.get("/signup", function (req, res) {
@@ -100,11 +145,6 @@ module.exports = function (app) {
   }), function (req, res) {
     res.redirect('/customer/' + req.user.username);
   });
-
-  // // LOAD DASHBOARD PAGE
-  // app.get("/dashboard", isLoggedIn, function (req, res) {
-  //   res.render("dashboard");
-  // });
 
   // LOGOUT
   app.get("/logout", function (req, res) {

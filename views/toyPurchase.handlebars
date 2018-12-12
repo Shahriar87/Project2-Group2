@@ -2,7 +2,13 @@
 
 <h1>{{msg}} : Product Page</h1>
 <h2>{{dbToy.toyName}}</h2>
-
+<center>
+    <div class="shopper-css">
+        <img id="cart-img" src="/images/Shopping-Cart-10.png" alt="shopping-cart" height="50" width="50">
+        <a href="/order/customer/toy/{{dbToy.id}}"><button type="button"  class="btn btn-secondary center m-1">Order</button></a>
+        <br>
+    </div>
+</center>
 <div class="container">
     <div class="row seven-cols">
         <div class="col-lg-1">Toy ID
@@ -45,7 +51,7 @@
                 <p>{{dbToy.toyDescription}}</p>
             </div>
         </div>
-        {{!-- <button type="button" id="quantBtn" class="btn btn-secondary center m-5">Update Quantity</button> --}}
+        
     </div>
     <a href="/">← Back To Home</a>
 
