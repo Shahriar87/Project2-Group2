@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
     <style>
         table {
     font-family: arial, sans-serif;
@@ -33,29 +34,36 @@
 
 <body>
     <br><br>
-    <div class="container">
+    <div id = "submitOrderCard" class="container">
         <div class="row">
             <div class="col-md-12">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Toy name</label>
-                        <input type="text" class="form-control" id="toyName" aria-describedby="emailHelp" placeholder="Enter Toy Name">
-                        <small id="emailHelp" class="form-text text-muted"></small>
+                <div class="card">
+                    <h3 class="card-header">Current Order</h3>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Toy name</label>
+                                <input type="text" class="form-control" id="toyName" aria-describedby="emailHelp"
+                                    placeholder="Enter Toy Name">
+                                <small id="emailHelp" class="form-text text-muted"></small>
 
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Toy Quantity</label>
+                                <input type="text" class="form-control" id="toyQuantity" placeholder="Enter Toy Quantity">
+                                <label id="quantityWarning" for="exampleInputPassword1">Are you sure you want to order
+                                    x
+                                    amount?</label>
+                            </div>
+                            <button id="order-submit" type="submit" class="btn btn-primary">Submit Order</button>
+                            <button id="order-history" type="submit" class="btn btn-primary">Order History</button>
+                            <button id="currentOrders" type="submit" class="btn btn-primary">Current Orders</button>
+                            <a href = "/orderConfirm" id="warningConfirm" class="btn btn-light">Yes, I'm sure...</a>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Toy Quantity</label>
-                        <input type="text" class="form-control" id="toyQuantity" placeholder="Enter Toy Quantity">
-                        <label id="quantityWarning" for="exampleInputPassword1">Are you sure you want to order x
-                            amount?</label>
-                    </div>
-                    <button id="order-submit" type="submit" class="btn btn-primary">Submit Order</button>
-                    <button id="order-history" type="submit" class="btn btn-primary">Order History</button>
-                    <button id="currentOrders" type="submit" class="btn btn-primary">Current Orders</button>
-                    <button id="warningConfirm" type="submit" class="btn btn-primary">Yes, I'm sure...</button>
-                </form>
+                </div>
             </div>
-        </div>
+        </div><br>
 
         <div id="orderHistoryCard" class="row">
             <div class="col-md-12">
@@ -93,7 +101,8 @@
                                 <th>Time Ordered</th>
                             </tr>
                         </table><br>
-                        <button id="orderConfirmTwo" type="submit" class="btn btn-primary">Yes, I'm sure...</button>
+                        <!-- <button id="orderConfirmTwo" type="submit" class="btn btn-primary">Yes, I'm sure...</button> -->
+                        <a href = "/orderConfirm" id="orderConfirmTwo" class="btn btn-primary">Yes, I'm sure...</a>
 
                     </div>
                 </div>
@@ -118,7 +127,7 @@
             event.preventDefault();
             $("#orderHistoryCard").show();
             $("#currentOrderValidationCard").hide();
-            $("#order-submit").show();
+            $("#order-submit").hide();
             $("#currentOrders").show();
             $("#cardHeaderOne").html("<h3>Order History</h3>");
             console.log("order history clicked");
@@ -145,16 +154,16 @@
 
             if ($("#toyQuantity").val().trim() > 10) {
                 //This is the red text warning if a user orders > 10 items
-                $("#quantityWarning").text("Are you sure you want to order " + $("#toyQuantity").val().trim() + " items?");
+                // $("#quantityWarning").text("Are you sure you want to order " + $("#toyQuantity").val().trim() + " items?");
                 //This shows the div with the red text warning below the quantity input field
-                $("#quantityWarning").show();
+                // $("#quantityWarning").show();
                 //This shows the yes i'm sure... button right below form
                 // $("#warningConfirm").show();
                 //This hides the order submit button
                 $("#order-submit").hide();
                 //This hides the order history button
                 $("#order-history").show();
-                $("#quantityWarning").attr('style', 'color:red');
+                // $("#quantityWarning").attr('style', 'color:red');
 
 
                 console.log(Number.isInteger(parseInt($("#toyQuantity").val().trim())));
@@ -168,6 +177,7 @@
                 $("#orderConfirmTwo").show();
 
                 $("#cardHeaderTwo").html("<h3>Are you sure you want to submit this order?</h3>");
+                $("#cardHeaderTwo").attr('style', 'color:red');
 
 
                 $("#columnHeadersTwo").append("<tr><td>" + $("#toyName").val().trim() + "</td><td>" + parseInt($("#toyQuantity").val().trim()) + "</td><td>" + moment().format("LLL") + "</td></tr>")
@@ -216,6 +226,8 @@
                         })
 
                     })
+
+
                 })
 
             } else {
@@ -223,13 +235,19 @@
 
             }
 
+        })
 
+        $("#currentOrders").on("click", function (event) {
+            event.preventDefault();
+            $("#orderHistoryCard").hide();
+            $("#currentOrderCard").show();
+            $("#currentOrderValidationCard").show();
+            $("#order-submit").show();
 
 
 
 
         })
-
 
 
 
