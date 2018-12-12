@@ -1,0 +1,91 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="print.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://printjs-4de6.kxcdn.com/print.min.css"></script>
+    <style>
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+    
+      #quantityWarning {
+        color: black;
+      }
+        </style>
+    <title>Print You Receipt</title>
+</head>
+
+<body><br><br>
+    <div class="container">
+        <div id="printRow" class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div id="cardHeaderOne" class="card-header">
+                        <h3>Receipt</h3>
+                    </div>
+                    <div class="card-body">
+                        <table id="columnHeaders">
+                            <tr>
+                                <th>Toy Name</th>
+                                <th>Toy Quantity</th>
+                                <th>Time Ordered</th>
+                            </tr>
+                        </table><br>
+                        <div>
+                            <button id="printOne" type="submit" class="btn btn-primary">Print Receipt...</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        $.get("/api/last", function (data) {
+            for (i = 0; i < data.length; i++) {
+                var toyName = data[i].ToyName;
+                var toyQuantity = data[i].ToyQuantity;
+                var timeOrdered = data[i].created_at;
+
+                console.log(moment(timeOrdered).format("LLL"));
+
+                $("#columnHeaders").append("<tr><td>" + toyName + "</td><td>" + toyQuantity + "</td><td>" + moment(timeOrdered).format("LLL") + "</td></tr>")
+
+            }
+        })
+
+        $("#printRow").on("click", function (data) {
+            window.print()
+        })
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

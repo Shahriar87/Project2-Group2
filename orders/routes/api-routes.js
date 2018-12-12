@@ -16,8 +16,21 @@ module.exports = function(app) {
       // results are available to us inside the .then
       res.json(results);
     });
-
   });
+
+    app.get("/api/last", function(req, res) {
+
+        Orders.findAll({
+          limit: 1,
+          order: [ [ 'createdAt', 'DESC' ]]
+        }).then(function(results){
+          //only difference is that you get users list limited to 1
+          //entries[0]
+          res.json(results);
+        }); 
+      });
+
+  
 
   // Add a chirp
   app.post("/api/new", function(req, res) {
@@ -35,5 +48,7 @@ module.exports = function(app) {
     });
 
   });
+
+  
 
 };
