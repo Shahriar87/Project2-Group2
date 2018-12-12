@@ -10,6 +10,12 @@ module.exports = function(app) {
   // index route loads view.html
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
+
+  });
+
+  app.get("/orderConfirm", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/orderSummary.html"));
+
   });
 
 };

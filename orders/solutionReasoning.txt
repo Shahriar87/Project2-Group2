@@ -1,0 +1,27 @@
+If < 10 units
+	and press submit, it does not automatically push to database
+	it shows up on the "current orders table"
+	then user must press "yes i'm sure"
+	**if submit multiple orders to the current orders card, then it duplicates the most recent order in the database**
+	//can solve this problem by hiding the submit button or form entirely when the user-
+		//submits the order, thereby preventing the user from submitting multiple orders
+If > 10 units
+	and press submit, it will push the orders to the current orders card
+	if user presses "yes i'm sure" then it will push to the database
+	**have not yet built functionality to add multiple orders to the current orders card
+	**but if user currently presses order history, they can accidentally add multiple orders to the current orders page**
+	//can solve this problem by hiding the form entirely when the user hits the order history
+		//may need to make a create order button so the user can navigate back to submitting an order
+
+Also may want to consider linking more of the buttons to pages served by the html routes
+
+
+
+
+Shopping Cart Concept if Enough Time
+	
+	 
+	
+	
+
+	
