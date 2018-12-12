@@ -1,7 +1,10 @@
 var db = require("../models");
 
 module.exports = function (app) {
-  // Load index page
+
+  var passport = require('passport')
+
+  // LOAD INDEX PAGE
   app.get("/", function (req, res) {
     db.Example.findAll({}).then(function (dbExamples) {
       res.render("index", {
@@ -44,27 +47,100 @@ module.exports = function (app) {
   });
 
   // LOAD CUSTOMER PAGE
-  app.get("/customer", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
+  app.get("/customer/:id", isLoggedIn, function (req, res) {
+    db.user.findOne({
+      attributes: [
+        "id", "firstname", "lastname"
+      ],
+      where: { id: req.user.id },
+      raw: true
+    }).then(function (dbUser) {
+      // console.log("===========" + req.user);
       res.render("customerPage", {
+        dbUser,
         msg: "Christmas Toy Store"
       });
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (
-      dbExample
+  // LOAD TOY PAGE
+  app.get("/toy/:id", function (req, res) {
+    db.Toy.findOne({
+      attributes: [
+        "id", "toyName", "toyDescription", "price", "ageAbove",
+        "rating", "unitStock", "image"
+      ],
+      where: { id: req.params.id },
+      raw: true
+    }).then(function (
+      dbToy
     ) {
-      res.render("example", {
-        example: dbExample
+      // console.log(dbToy);
+      res.render("toyDescription", {
+        dbToy,
+        msg: "Christmas Toy Store"
       });
     });
   });
 
-  // Render 404 page for any unmatched routes
+  // SEQUELIZE PASSPORT CODES:
+  // LOAD SIGNUP PAGE
+  app.get("/signup", function (req, res) {
+    res.render("signup");
+  });
+
+  // LOAD SIGNIN PAGE
+  app.get("/signin", function (req, res) {
+    res.render("signin");
+  });
+
+  // POST TO SIGNUP PAGE
+  app.post('/signup', passport.authenticate('local-signup', {
+    failureRedirect: '/signup'
+  }), function (req, res) {
+    res.redirect('/customer/' + req.user.username);
+  });
+
+  // // LOAD DASHBOARD PAGE
+  // app.get("/dashboard", isLoggedIn, function (req, res) {
+  //   res.render("dashboard");
+  // });
+
+  // LOGOUT
+  app.get("/logout", function (req, res) {
+    req.session.destroy(function (err) {
+      res.redirect('/');
+    });
+  });
+
+  // SIGN IN
+  app.post('/signin', passport.authenticate('local-signin', {
+    failureRedirect: '/signin'
+  }), function (req, res) {
+    res.redirect('/customer/' + req.user.username);
+  });
+
+
+  // Load example page and pass in an example by id
+  // app.get("/example/:id", function (req, res) {
+  //   db.Example.findOne({ where: { id: req.params.id } }).then(function (
+  //     dbExample
+  //   ) {
+  //     res.render("example", {
+  //       example: dbExample
+  //     });
+  //   });
+  // });
+
+  // RENDER 404 FOR UNMATCHED ROUTE 
   app.get("*", function (req, res) {
     res.render("404");
   });
+
+  // PROTECT THE LOGGED IN PAGE
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+      return next();
+    res.redirect('/signin');
+  }
 };
