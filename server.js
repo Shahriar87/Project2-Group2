@@ -21,6 +21,20 @@ app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
+// USING HANDLEBARS HELPERS FOR REVERSE METHOD ON ARRAYS
+var helpers = require('handlebars-helpers')();
+//=> returns object with all (130+) helpers
+
+helpers.reverse = function (val) {
+  if (Array.isArray(val)) {
+    val.reverse();
+    return val;
+  }
+  if (val && typeof val === 'string') {
+    return val.split('').reverse().join('');
+  }
+};
+
 // MAKING STATIC ROUTE TO USE CSS & JS
 app.use(express.static("public"));
 

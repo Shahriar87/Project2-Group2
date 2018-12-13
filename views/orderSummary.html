@@ -53,7 +53,8 @@
                         <div>
                             <button id="printOne" type="submit" class="btn btn-primary">Print Receipt...</button>
                         </div>
-                        <!-- <a href="/orderConfirm" id="returnOrderPage" class="btn btn-primary">Return to Order Page</a> -->
+                        <br>
+                        <a href="/" class="btn btn-primary">← Back To Home</a>
                     </div>
                 </div>
             </div>
@@ -73,7 +74,7 @@
             }
         })
 
-        $("#printRow").on("click", function (data) {
+        $("#printOne").on("click", function (data) {
             window.print()
         })
 

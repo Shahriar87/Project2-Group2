@@ -146,28 +146,58 @@
             <br>
         </div>
         {{!-- <div class="row-2"></div> --}}
-        <div class="col-8 text-center">Inventory Table
-            <table>
-                <tr>
-                    <th>Item ID</th>
-                    <th>Toy</th>
-                    <th>Price</th>
-                    <th>Stock Quantity</th>
-                </tr>
-                {{#each dbToy}}
-                <tr>
-                    <td>{{id}}</td>
-                    <td>
-                        <a href="/toy/{{id}}">
-                            <img src={{image}} alt="toy" style="width:100px">
-                            {{toyName}}
-                        </a>
-                    </td>
-                    <td>{{price}}</td>
-                    <td>{{unitStock}}</td>
-                </tr>
-                {{/each}}
-            </table>
+        <div class="col-8">
+            <div class="text-center table"><h2>Inventory Table</h2>
+                <table>
+                    <tr>
+                        <th>Item ID</th>
+                        <th>Toy</th>
+                        <th>Price</th>
+                        <th>Stock Quantity</th>
+                    </tr>
+                    {{reverse dbToy}}
+                    {{#each dbToy}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>
+                            <a href="/toy/{{id}}">
+                                <img src={{image}} alt="toy" style="width:100px">
+                                {{toyName}}
+                            </a>
+                        </td>
+                        <td>{{price}}</td>
+                        <td>{{unitStock}}</td>
+                    </tr>
+                    {{/each}}
+                    {{reverse}}
+                </table>
+            </div>
+
+            <div class="text-center table"><h2>Order History Table</h2>
+                <table>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Toy</th>
+                        <th>Price</th>
+                        <th>Purchase Quantity</th>
+                        <th>Sales Total</th>
+                        <th>Sales Date</th>
+                    </tr>
+                    {{reverse dbOrder}}
+                    {{#each dbOrder}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{ToyName}}</td>
+                        <td>{{price}}</td>
+                        <td>{{ToyQuantity}}</td>
+                        <td>{{totalCost}}</td>
+                        <td>{{createdAt}}</td>
+                    </tr>
+                    {{/each}}
+                    {{reverse}}
+
+                </table>
+            </div>
         </div>
 
         <a href="/">← Back To Home</a>

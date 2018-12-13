@@ -11,7 +11,7 @@ h4{
     font-size: 35pt;
     /* width: 30%; */
 }
-.col-8{
+.table{
     border-style: solid;
     border-color: #000;
     height: 800px;
@@ -22,7 +22,7 @@ h4{
     opacity: 0.85;
     overflow: scroll;
 }
-.col-8:hover, .col-4:hover {
+.table:hover, .col-4:hover {
     box-shadow: 6px 6px 15px #D14641;
     margin-bottom: 1px;
 }

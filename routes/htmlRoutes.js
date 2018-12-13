@@ -22,10 +22,12 @@ module.exports = function (app) {
     db.Category.findAll({
       raw: true
     }).then(function (dbCategory) {
+
       // GET ALL MANUFACTURER
       db.Manufacturer.findAll({
         raw: true
       }).then(function (dbManufacturer) {
+
         // GET ALL TOYS
         db.Toy.findAll({
           attributes: [
@@ -34,15 +36,26 @@ module.exports = function (app) {
           ],
           raw: true
         }).then(function (dbToy) {
-          var dbStuff = {
-            dbCategory,
-            dbManufacturer,
-            dbToy,
-            msg: "Christmas Toy Store"
-          };
-          // console.log(dbStuff);
-          // console.log(dbToy);
-          res.render("companyPage", dbStuff);
+
+          // GET ALL ORDERS
+          db.Order.findAll({
+            attributes: [
+              "id", "ToyName", "price",
+              "ToyQuantity", "totalCost", "createdAt"
+            ],
+            raw: true
+          }).then(function (dbOrder) {
+            var dbStuff = {
+              dbCategory,
+              dbManufacturer,
+              dbToy,
+              dbOrder,
+              msg: "Christmas Toy Store"
+            };
+            // console.log(dbStuff);
+            // console.log(dbToy);
+            res.render("companyPage", dbStuff);
+          })
         });
       });
     });
