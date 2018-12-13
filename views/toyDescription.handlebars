@@ -8,7 +8,7 @@
         <div class="col-lg-1">Toy ID
             <hr>
             <div>
-                <h2>{{dbToy.id}}</h2>
+                <h2 id="toyID">{{dbToy.id}}</h2>
             </div>
         </div>
         <div class="col-lg-1">PRICE
@@ -25,7 +25,7 @@
         </div>
         <div class="col-lg-1">QUANTITY
             <hr>
-            <div>
+            <div id="stockQuant">
                 <h2>{{dbToy.unitStock}}</h2>
             </div>
         </div>
@@ -45,8 +45,13 @@
                 <p>{{dbToy.toyDescription}}</p>
             </div>
         </div>
-        {{!-- <button type="button" id="quantBtn" class="btn btn-secondary center m-5">Update Quantity</button> --}}
+        <div>
+            <input type="text" id="toyQuant" class="m-5" placeholder="How many to add">
+            <button type="button" id="quantBtn" class="btn btn-secondary center m-5">Add Quantity</button>
+        </div>
     </div>
     <a href="/">← Back To Home</a>
 
 </div>
+
+<script src="js/toy.js" type="text/javascript"></script>

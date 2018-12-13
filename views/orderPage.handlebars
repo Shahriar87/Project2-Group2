@@ -1,7 +1,11 @@
 <link rel="stylesheet" href="styles/orderPageStyle.css" media="screen" title="no title" charset="utf-8">
 
-<h1>{{msg}} : Order Page</h1>
+<div class="text-center mt-5">
+    <h2>{{msg}}</h2>
+    <h2>Order Page</h2>
+</div>
 
+<br>
 <div id="submitOrderCard" class="container">
     <div class="row">
         <div class="col-md-12">
@@ -14,12 +18,16 @@
                             <input type="text" class="form-control" id="custName" placeholder="Enter your Name">
                         </div> --}}
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Toy name</label>
+                            <label for="exampleInputEmail1"><span id="toyId">{{dbToy.id}}</span>: Toy name</label>
                             <h3 class="form-control" id="toyName">{{dbToy.toyName}}</h3>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Toy price</label>
+                            <label for="exampleInputEmail1">Toy price $</label>
                             <h3 class="form-control" id="toyPrice">{{dbToy.price}}</h3>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Available Inventory Quantity</label>
+                            <h3 class="form-control" id="toyStock">{{dbToy.unitStock}}</h3>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Toy Quantity</label>
@@ -30,8 +38,8 @@
                         </div>
 
                         <button id="order-submit" type="submit" class="btn btn-primary">Submit Order</button>
-                        {{!-- <button id="order-history" type="submit" class="btn btn-primary">Order History</button>
-                        --}}
+                        <p id="warning" class="text-danger">Sorry! Your requested quantity exceeds available inventory</p>
+                        
                         <button id="currentOrders" type="submit" class="btn btn-primary">Current Orders</button>
                         <a href="/orderConfirm" id="warningConfirm" class="btn btn-light">Yes, I'm sure...</a>
                     </form>
@@ -76,7 +84,7 @@
                             <th>Time Ordered</th>
                         </tr>
                     </table><br>
-                    <!-- <button id="orderConfirmTwo" type="submit" class="btn btn-primary">Yes, I'm sure...</button> -->
+                    {{!-- <button id="orderConfirmTwo" type="submit" class="btn btn-primary">Yes, I'm sure...</button>  --}}
                     <a href="/orderConfirm" id="orderConfirmTwo" class="btn btn-primary">Yes, I'm sure...</a>
 
                 </div>

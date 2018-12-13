@@ -72,10 +72,10 @@ $("#findToy").on("click", function (event) {
             $('#recommendPhoto1').attr("src", data.recommendArray[0].image);
             $('#toyLink1').attr("href", "/customer/" + data.dbUser.id +  "/toy/" + data.recommendArray[0].id);
 
-            $('#recommendPhoto2').attr("src", data.recommendArray[0].image);
+            $('#recommendPhoto2').attr("src", data.recommendArray[1].image);
             $('#toyLink2').attr("href", "/customer/" + data.dbUser.id +  "/toy/" + data.recommendArray[1].id);
 
-            $('#recommendPhoto3').attr("src", data.recommendArray[0].image);
+            $('#recommendPhoto3').attr("src", data.recommendArray[2].image);
             $('#toyLink3').attr("href", "/customer/" + data.dbUser.id +  "/toy/" + data.recommendArray[2].id);
         });
 

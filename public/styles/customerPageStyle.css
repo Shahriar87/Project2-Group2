@@ -24,20 +24,14 @@ h4 {
     font-family: 'Parisienne', cursive;
 }
 h5 {
-    font-family: 'Parisienne', cursive;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 22pt;
     color: rgb(196, 4, 4); 
     text-align: center;
 }
 
 /* CUSTOMERINDEX.HTML CSS HERE */
-h6{
-    color: beige;
-    font-size: 25px;
-    display: block;
-    margin: auto;
-    text-align: center;
-}
+
 .form-control{
     margin: auto;
     width: 90%;
@@ -47,6 +41,10 @@ h6{
 .form-control:hover{
     box-shadow: 6px 6px 15px white;
 }
+
+/* .form-group {
+    font-family: 'Courier New', Courier, monospace
+} */
 
 .btn-secondary{
     margin: auto;

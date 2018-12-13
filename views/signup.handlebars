@@ -3,30 +3,41 @@
 
 <head>
     <title></title>
+    <link rel="stylesheet" href="styles/customerPageStyle.css" media="screen" title="no title" charset="utf-8">
+
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <form id="signup" name="signup" method="post" action="/signup">
+    <div id="b-card" class="container text-center">
+        <h2>Christmas Toy Store</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="signup" name="signup" method="post" action="/signup">
+                            <div>
                                 <label for="email">Email Address</label>
                                 <input class="text" name="email" type="email" />
+                            </div>
+                            <div>
                                 <label for="firstname">Firstname</label>
                                 <input name="firstname" type="text" />
+                            </div>
+                            <div>
                                 <label for="lastname">Lastname</label>
                                 <input name="lastname" type="text" />
+                            </div>
+                            <div>
                                 <label for="password">Password</label>
                                 <input name="password" type="password" />
-                                <input class="btn" type="submit" value="Sign Up" />
-                            </form>
-                            <h6>Already signed up before? Want to sign in instead?</h6>
-                            <a href="/signin"><input class="btn" type="submit" value="Sign In" /></a>
-
+                            </div>
+                            <input class="btn" type="submit" value="Sign Up" />
+                        </form>
+                        <h6 style="">Already signed up before? Want to sign in instead?</h6>
+                        <a href="/signin"><input class="btn" type="submit" value="Sign In" /></a>
+                        <div>
+                            <a href="/">← Back To Home</a>
                         </div>
                     </div>
                 </div>

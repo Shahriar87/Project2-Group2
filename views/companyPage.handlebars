@@ -1,10 +1,16 @@
 <link rel="stylesheet" href="styles/companyPageStyle.css" media="screen" title="no title" charset="utf-8">
 
 <div class="container">
-    <h2>{{msg}}: Company</h2>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6 text-center">
+            <h4>{{msg}}: Company</h4>
+        </div>
+        <div class="col-3"></div>
+    </div>
     <br>
     <div class="row">
-        <div class="col-4">
+        <div class="col-4 column4">
             <form id="inventoryForm">
                 <div class="form-group">
                     <label for="toyCategory">Toy Category</label>
@@ -139,8 +145,8 @@
             </form>
             <br>
         </div>
-        <div class="row-2"></div>
-        <div class="col-8">Inventory Table
+        {{!-- <div class="row-2"></div> --}}
+        <div class="col-8 text-center">Inventory Table
             <table>
                 <tr>
                     <th>Item ID</th>
@@ -172,7 +178,7 @@
     <div id="myModal" class="modal">
 
         <!-- MODAL CONTENT -->
-        <div class="modal-content">
+        <div class="modal-content text-center">
             <span class="close">&times;</span>
             <div class="modal-body">
                 <div class="row">
@@ -214,7 +220,7 @@
     <div id="myModal2" class="modal">
 
         <!-- MODAL2 CONTENT -->
-        <div class="modal-content">
+        <div class="modal-content text-center">
             <span class="close">&times;</span>
             <div class="modal-body">
                 <div class="row">

@@ -165,65 +165,6 @@ $(document).ready(function () {
         })
     }
 
-    // // Gets toy data for the current toy if we're editing
-    // function getToyData(id, type) {
-    //     var queryUrl;
-    //     switch (type) {
-    //         case "toy":
-    //             queryUrl = "/api/toys/" + id;
-    //             break;
-    //         case "category":
-    //             queryUrl = "/api/category/" + id;
-    //             break;
-    //         case "manufacturer":
-    //             queryUrl = "/api/manufacturer/" + id;
-    //             break;
-    //         default:
-    //             return;
-    //     }
-    //     $.get(queryUrl, function (data) {
-    //         if (data) {
-    //             console.log(data.CategoryID || data.ManufacturerID || data.id);
-    //             // If this toy exists, prefill our companypage forms with its data
-    //             titleInput.val(data.title);
-    //             bodyInput.val(data.body);
-    //             authorId = data.AuthorId || data.id;
-    //             $("#name").val(data.name);
-    //             $("#description").val(data.description);
-    //             $("#price").val(data.price);
-    //             $("#quantity").val(data.quantity);
-    //             $("#imageURL").val(data.image);
-    //             categoryId = data.CategoryID || data.ManufacturerID || data.id;
-    //             manufacturerId = data.CategoryID || data.ManufacturerID || data.id;
-    //             // If we have a toy with this id, set a flag for us to know to update the toy
-    //             // when we hit submit
-    //             updating = true;
-    //         }
-    //     });
-    // }
-
-    // A function to get Category and then render our list of Category
-    // function getCategory() {
-    //     $.get("/api/category", renderCategoryList);
-    // }
-    // renderCategoryList
-    // // Function to either render a list of categories, or if there are none, direct the user to the page
-    // // to create a category first
-    // function renderCategoryList(data) {
-    //     if (!data.length) {
-    //         $("#myModal").style.display = "block";
-    //     }
-    //     // var rowsToAdd = [];
-    //     // for (var i = 0; i < data.length; i++) {
-    //     //     rowsToAdd.push(createAuthorRow(data[i]));
-    //     // }
-    //     $("#toyCategory").empty();
-    //     // console.log(rowsToAdd);
-    //     // console.log(authorSelect);
-    //     // authorSelect.append(rowsToAdd);
-    //     // authorSelect.val(authorId);
-    // }
-
     // ADDING A NEW CATEGORY
 
     $("#catButton").on("click", function (event) {

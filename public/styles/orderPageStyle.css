@@ -18,3 +18,8 @@ background-color: #dddddd;
 #quantityWarning {
 color: black;
 }
+
+h2{
+    font-family: 'Parisienne', cursive;
+    font-size: 35pt;
+}

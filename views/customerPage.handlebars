@@ -7,7 +7,8 @@
 
 <h4 class="card-title">{{msg}}</h4>
 <div id="b-card" class="card-body container jumbotron">
-    <h2><strong>Welcome<span id="userID" style="visibility:hidden;">{{dbUser.id}}</span> {{dbUser.firstname}} {{dbUser.lastname}}!</strong></h2>
+    <h2 class="text-center"><strong>Welcome<span id="userID" style="visibility:hidden;">{{dbUser.id}}</span>
+            {{dbUser.firstname}} {{dbUser.lastname}}!</strong></h2>
     <div class="form-group">
         <h5 for="exampleFormControlSelect1">1. Is your child reckless?</h5>
 
@@ -76,13 +77,13 @@
     <div id="myModal" class="modal">
 
         <!-- MODAL CONTENT -->
-        <div class="modal-content">
+        <div class="modal-content text-center">
             <span class="close">&times;</span>
             <div class="modal-header">
-                <h2 class="modal-title"><strong>Hello!</strong></h2>
+                <h3 class="modal-title">Hello <strong>{{dbUser.firstname}} {{dbUser.lastname}}!</strong></h3>
             </div>
             <div class="modal-body">
-                <h2>Your recommended toys</h2>
+                <h3>Your recommended toys</h3>
                 <a id="toyLink1"><img id="recommendPhoto1" alt="Recommended Toy1" style="width:20%;"></a>
                 <a id="toyLink2"><img id="recommendPhoto2" alt="Recommended Toy2" style="width:20%;"></a>
                 <a id="toyLink3"><img id="recommendPhoto3" alt="Recommended Toy3" style="width:20%;"></a>
@@ -99,13 +100,14 @@
     <div id="myModal2" class="modal">
 
         <!-- MODAL CONTENT -->
-        <div class="modal-content">
+        <div class="modal-content text-center">
             <span class="close">&times;</span>
             <div class="modal-header">
-                <h2 class="modal-title"><strong>Welcome!<span id="userID" style="visibility:hidden;">{{dbUser.id}}</span> {{dbUser.firstname}} {{dbUser.lastname}}!</strong></h2>
+                <h3 class="modal-title">Welcome back<strong><span id="userID" style="visibility:hidden;">{{dbUser.id}}</span>
+                        {{dbUser.firstname}} {{dbUser.lastname}}!</strong></h3>
             </div>
             <div class="modal-body">
-                <h2>Your previously recommended toys were:</h2>
+                <h3>Your previously recommended toys were:</h3>
                 <a id="toyLink4"><img id="recommendPhoto4" alt="Recommended Toy1" style="width:20%;"></a>
                 <a id="toyLink5"><img id="recommendPhoto5" alt="Recommended Toy2" style="width:20%;"></a>
                 <a id="toyLink6"><img id="recommendPhoto6" alt="Recommended Toy3" style="width:20%;"></a>
@@ -117,7 +119,7 @@
 
     </div>
 
-    <a href="/logout"><input class="btn" type="submit" value="Sign out" /></a>
+    <div class="text-center"><a href="/logout"><input class="btn" type="submit" value="Sign out" /></a></div>
 
 </div>
 

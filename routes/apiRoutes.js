@@ -1,5 +1,7 @@
 var db = require("../models");
 
+var sequelize = require('sequelize');
+
 module.exports = function (app) {
 
   // GET Category API
@@ -38,6 +40,21 @@ module.exports = function (app) {
     });
   });
 
+
+  // PUT ROUTE FOR UPDATING TOYS
+  app.put("/api/toys/:id", function (req, res) {
+    db.Toy.update({
+      unitStock: sequelize.literal('unitStock +' + req.body.unitStock)
+    }, {
+        where: {
+          id: req.params.id
+        }
+      }).then(function (dbToy) {
+        console.log(dbToy);
+        res.json(dbToy);
+      });
+  });
+
   // POST ROUTE FOR SAVING NEW CATEGORY
   app.post("/api/category", function (req, res) {
     console.log(req.body);
@@ -69,6 +86,7 @@ module.exports = function (app) {
         // THE ALGORITHM FOR TOY RECOMMENDATION
         var recommendedToyScore = dbUser;
         var recommendArray = [];
+        var index;
 
         // console.log("================");
         // console.log(dbUser);
@@ -79,7 +97,7 @@ module.exports = function (app) {
         for (var j = 0; j < 3; j++) {
           var counterScore = 25;
           var closestToy;
-          var index = -1;
+
 
           for (var i = 0; i < dbToy.length; i++) {
 
@@ -102,6 +120,7 @@ module.exports = function (app) {
               index = i;
             }
           }
+
           recommendArray.push(closestToy);
           dbToy.splice(index, 1);
         }
@@ -135,6 +154,7 @@ module.exports = function (app) {
 
         var recommendedToyScore = req.body;
         var recommendArray = [];
+        var index = -1;
 
         // console.log(dbToy[1].Q1)
         // console.log(req.body.Q1);
@@ -142,7 +162,6 @@ module.exports = function (app) {
         for (var j = 0; j < 3; j++) {
           var counterScore = 25;
           var closestToy;
-          var index = -1;
 
           for (var i = 0; i < dbToy.length; i++) {
 
@@ -180,7 +199,7 @@ module.exports = function (app) {
     });
   });
 
-  // POST ROUTE FOR USER PREFERENCE SAVING
+  // PUT ROUTE FOR USER PREFERENCE SAVING
   app.put("/api/user", function (req, res) {
     console.log(req.body);
     db.user.update({
@@ -220,8 +239,8 @@ module.exports = function (app) {
 
   app.post("/api/new", function (req, res) {
 
-    console.log("Orders Data:");
-    console.log(req.body);
+    // console.log("Orders Data:");
+    // console.log(req.body);
 
     db.Order.create({
       ToyName: req.body.ToyName,
@@ -235,6 +254,7 @@ module.exports = function (app) {
     });
 
   });
+
 
   // Delete an example by id
   app.delete("/api/examples/:id", function (req, res) {
