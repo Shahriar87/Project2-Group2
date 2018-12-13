@@ -155,7 +155,7 @@
                         <th>Price</th>
                         <th>Stock Quantity</th>
                     </tr>
-                    {{reverse dbToy}}
+                    {{!-- {{reverse dbToy}} --}}
                     {{#each dbToy}}
                     <tr>
                         <td>{{id}}</td>
@@ -169,7 +169,7 @@
                         <td>{{unitStock}}</td>
                     </tr>
                     {{/each}}
-                    {{reverse}}
+                    {{!-- {{reverse}} --}}
                 </table>
             </div>
 
@@ -183,7 +183,7 @@
                         <th>Sales Total</th>
                         <th>Sales Date</th>
                     </tr>
-                    {{reverse dbOrder}}
+                    {{!-- {{reverse dbOrder}} --}}
                     {{#each dbOrder}}
                     <tr>
                         <td>{{id}}</td>
@@ -194,7 +194,7 @@
                         <td>{{createdAt}}</td>
                     </tr>
                     {{/each}}
-                    {{reverse}}
+                    {{!-- {{reverse}} --}}
 
                 </table>
             </div>
