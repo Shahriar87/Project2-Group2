@@ -45,11 +45,20 @@ module.exports = function (app) {
             ],
             raw: true
           }).then(function (dbOrder) {
+
+            var reversedbToy = function(){
+              return dbToy.reverse();
+            };
+
+            var reversedbOrder = function(){
+              return dbOrder.reverse();
+            };
+            
             var dbStuff = {
               dbCategory,
               dbManufacturer,
-              dbToy,
-              dbOrder,
+              reversedbToy,
+              reversedbOrder,
               msg: "Christmas Toy Store"
             };
             // console.log(dbStuff);

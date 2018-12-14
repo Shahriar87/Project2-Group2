@@ -147,7 +147,8 @@
         </div>
         {{!-- <div class="row-2"></div> --}}
         <div class="col-8">
-            <div class="text-center table"><h2>Inventory Table</h2>
+            <div class="text-center table">
+                <h2>Inventory Table</h2>
                 <table>
                     <tr>
                         <th>Item ID</th>
@@ -155,8 +156,7 @@
                         <th>Price</th>
                         <th>Stock Quantity</th>
                     </tr>
-                    {{!-- {{reverse dbToy}} --}}
-                    {{#each dbToy}}
+                    {{#each reversedbToy}}
                     <tr>
                         <td>{{id}}</td>
                         <td>
@@ -169,11 +169,11 @@
                         <td>{{unitStock}}</td>
                     </tr>
                     {{/each}}
-                    {{!-- {{reverse}} --}}
                 </table>
             </div>
 
-            <div class="text-center table"><h2>Order History Table</h2>
+            <div class="text-center table">
+                <h2>Order History Table</h2>
                 <table>
                     <tr>
                         <th>Order ID</th>
@@ -183,8 +183,7 @@
                         <th>Sales Total</th>
                         <th>Sales Date</th>
                     </tr>
-                    {{!-- {{reverse dbOrder}} --}}
-                    {{#each dbOrder}}
+                    {{#each reversedbOrder}}
                     <tr>
                         <td>{{id}}</td>
                         <td>{{ToyName}}</td>
@@ -194,8 +193,6 @@
                         <td>{{createdAt}}</td>
                     </tr>
                     {{/each}}
-                    {{!-- {{reverse}} --}}
-
                 </table>
             </div>
         </div>
